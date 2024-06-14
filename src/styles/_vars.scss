@@ -1,0 +1,16 @@
+@import 'functions';
+
+/** Colors */
+$colorBlue: #121e6c;
+$colorBlueBody: #111b5b;
+$colorBlueHover: #121e6c19;
+$colorRed: #ee424e;
+$colorGrayDark: #606060;
+$colorGrayLight: #f3f3f3;
+$colorGrayHover: #f3f3f33d;
+$colorBg: #f6f4f9;
+$colorGradient: linear-gradient(270deg, $colorRed -50%, $colorBlue 50%);
+$colorGradientRed: linear-gradient(270deg, $colorRed -50%, $colorBlue 150%);
+
+/** Shadows */
+$boxShadow: rgba($colorGrayDark, 0.2) rem(0) rem(8) rem(24);
