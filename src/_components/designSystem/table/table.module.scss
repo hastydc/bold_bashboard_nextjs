@@ -20,6 +20,7 @@
 
 .tableGray {
   color: var(--color-gray-dark);
+  font-weight: 400;
 }
 
 .tableRed {
@@ -63,6 +64,7 @@
   gap: rem(8);
   min-height: rem(32);
   color: var(--color-main-contrast);
+  font-weight: 600;
 
   @include media(mobile) {
     border-bottom: rem(1) solid rgba($colorGrayDark, 1);
@@ -101,6 +103,7 @@
 
 .deductionLabel {
   font-size: rem(14);
+  font-weight: 600;
 }
 
 .deductionAmount {
@@ -140,4 +143,9 @@
   align-self: center;
   border-radius: rem(32);
   margin: rem(8) auto;
+}
+
+.tdAmount {
+  flex-direction: column;
+  align-items: flex-start;
 }
