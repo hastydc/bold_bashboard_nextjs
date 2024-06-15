@@ -1,3 +1,5 @@
+import Style from './content.module.scss';
+
 type ContentProps = {
   children: React.ReactNode;
 };
@@ -5,7 +7,7 @@ type ContentProps = {
 const Content = ({ children }: ContentProps) => {
   return (
     <>
-      <div>{children}</div>
+      <div className={Style.content}>{children}</div>
     </>
   );
 };
