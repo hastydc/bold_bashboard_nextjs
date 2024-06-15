@@ -1,0 +1,42 @@
+.menuMobile {
+  position: fixed;
+  margin: auto;
+  top: rem(-128);
+  z-index: 5;
+  left: 0;
+  right: 0;
+  transition: 0.5s ease-in-out;
+  border-radius: rem(16);
+  background-color: var(--color-gray-light);
+  box-shadow: $boxShadow;
+}
+
+.active {
+  top: rem(68);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-main-contrast);
+  font-family: var(--font-semibold);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.item {
+  box-sizing: border-box;
+  padding: rem(16) rem(32);
+  width: 100%;
+  font-weight: 600;
+
+  &:nth-of-type(1) {
+    border-bottom: rem(1) solid rgba($colorGrayDark, 0.2);
+  }
+}

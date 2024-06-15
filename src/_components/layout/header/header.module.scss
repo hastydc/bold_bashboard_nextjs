@@ -1,0 +1,64 @@
+.header {
+  background: var(--color-gradient);
+  width: 100%;
+  display: flex;
+  height: rem(64);
+  box-sizing: border-box;
+  padding: rem(16) rem(32);
+  position: relative;
+  z-index: 10;
+  position: fixed;
+
+  @include media(tablet) {
+    height: rem(128);
+    padding: rem(32) rem(64);
+    position: relative;
+  }
+}
+
+.menu {
+  display: flex;
+  flex: 1;
+  justify-content: end;
+  align-items: center;
+  gap: rem(32);
+}
+
+.menuTheme {
+  width: rem(28);
+  height: rem(28);
+
+  @include media(tablet) {
+    display: none;
+  }
+}
+
+.menuThemeDesktop {
+  display: none;
+  width: rem(24);
+  height: rem(24);
+
+  @include media(tablet) {
+    display: block;
+  }
+}
+
+.menuIcon {
+  @include media(tablet) {
+    display: none;
+  }
+}
+
+.menuDesktop {
+  display: none;
+
+  @include media(tablet) {
+    display: flex;
+  }
+}
+
+.menuMobile {
+  @include media(tablet) {
+    display: none;
+  }
+}

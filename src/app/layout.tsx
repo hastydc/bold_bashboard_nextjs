@@ -2,6 +2,7 @@ import '@/styles/theme.scss';
 import MainThemeProvider from '@/_providers/mainThemeProvider';
 import { Metadata } from 'next';
 import { montserrat } from '@/styles/fonts';
+import LayoutProvider from '@/_providers/layoutProvider';
 
 export const metadata: Metadata = {
   title: 'Bold Dashboard',
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang='es'>
       <body className={montserrat.className}>
-        <MainThemeProvider>{children}</MainThemeProvider>
+        <MainThemeProvider>
+          <LayoutProvider>{children}</LayoutProvider>
+        </MainThemeProvider>
       </body>
     </html>
   );

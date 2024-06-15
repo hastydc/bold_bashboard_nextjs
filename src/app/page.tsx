@@ -1,11 +1,17 @@
-import ThemeSwitcher from '@/_components/theme-switcher/ThemeSwitcher';
-import Style from './page.module.scss';
+import Header from '@/_components/layout/header/Header';
+import Content from '@/_components/layout/content/Content';
+import Dashboard from '@/_components/dashboard/Dashboard';
 
 const Home = () => {
   return (
     <>
-      <div className={Style.home}>Homes</div>
-      <ThemeSwitcher />
+      <main>
+        <Header />
+
+        <Content>
+          <Dashboard />
+        </Content>
+      </main>
     </>
   );
 };
