@@ -21,6 +21,7 @@ const DateSelector = (dateSelectorProps: DateSelectorProps) => {
               value === dateFilter ? Style.active : ''
             }`}
             onClick={() => filterByDate(value)}
+            onKeyUp={() => filterByDate(value)}
           >
             {label ?? value}
           </button>

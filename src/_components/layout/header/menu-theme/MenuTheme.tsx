@@ -10,21 +10,22 @@ const MenuTheme = () => {
 
   return (
     <>
-      <button className={Style.menuTheme} aria-label='Cambiar tema'>
+      <button
+        className={Style.menuTheme}
+        aria-label='Cambiar tema'
+        onClick={() => updateTheme()}
+        onKeyUp={() => updateTheme()}
+      >
         <FaSun
           className={`${Style.iconLight} ${
             theme === Theme.DARK ? Style.active : ''
           }`}
-          onClick={() => updateTheme()}
-          onKeyUp={() => updateTheme()}
         />
 
         <FaMoon
           className={`${Style.iconDark}  ${
             theme === Theme.LIGHT ? Style.active : ''
           }`}
-          onClick={() => updateTheme()}
-          onKeyUp={() => updateTheme()}
         />
       </button>
     </>

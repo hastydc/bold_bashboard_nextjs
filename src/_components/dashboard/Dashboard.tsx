@@ -4,6 +4,7 @@ import Style from './dashboard.module.scss';
 import { TransactionDate } from '@/models/transactionDate.enum';
 import { PaymentMethod } from '@/models/paymentMethod.enum';
 import DateSelector from '../designSystem/dateSelector/DateSelector';
+import PaymentMethodSelector from '../designSystem/paymentMethodSelector/PaymentMethodSelector';
 
 const Dashboard = () => {
   const transactionData: TransactionData = {
@@ -27,7 +28,9 @@ const Dashboard = () => {
               <DateSelector {...transactionData} />
             </div>
 
-            <div className={Style.paymentSelector}></div>
+            <div className={Style.paymentSelector}>
+              <PaymentMethodSelector {...transactionData} />
+            </div>
           </div>
         </section>
 
