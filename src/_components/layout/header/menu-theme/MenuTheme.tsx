@@ -3,16 +3,10 @@
 import { FaMoon, FaSun } from 'react-icons/fa6';
 import Style from './menuTheme.module.scss';
 import { Theme } from '@/models/theme.enum';
-import { useTheme } from 'next-themes';
+import useMenuTheme from './hooks/useMenuTheme';
 
 const MenuTheme = () => {
-  const { theme, setTheme } = useTheme();
-
-  const updateTheme = () => {
-    const value = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-
-    setTheme(value);
-  };
+  const { theme, updateTheme } = useMenuTheme();
 
   return (
     <>

@@ -1,16 +1,11 @@
 'use client';
 
-import { useContext } from 'react';
 import { FaBars, FaX } from 'react-icons/fa6';
-import { LayoutContext } from '@/_providers/layoutProvider';
 import Style from './menuIcon.module.scss';
+import useMenuIcon from './hooks/useMenuIcon';
 
 const MenuIcon = () => {
-  const { showMenu, setShowMenu } = useContext(LayoutContext);
-
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
+  const { showMenu, toggleMenu } = useMenuIcon();
 
   return (
     <>

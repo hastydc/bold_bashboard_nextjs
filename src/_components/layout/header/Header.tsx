@@ -1,4 +1,4 @@
-import Logo from '@/_components/logo/Logo';
+import Logo from '@/_components/designSystem/logo/Logo';
 import Style from './header.module.scss';
 import MenuTheme from './menu-theme/MenuTheme';
 import MenuIcon from './menu-mobile-icon/MenuIcon';
