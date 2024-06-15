@@ -1,6 +1,6 @@
 import { TableData } from '@/_models/tableData.interface';
 import { TransactionAction } from '@/_models/transactionAction.enum';
-import { TransactionDate } from '@/_models/transactionDate.enum';
+import { DateFilter } from '@/_models/dateFilter.enum';
 import {
   TableDataContext,
   TableDataDispatchContext,
@@ -14,16 +14,16 @@ const useDateSelector = (
 ) => {
   const options = [
     {
-      label: translations[TransactionDate.TODAY],
-      value: TransactionDate.TODAY,
+      label: translations[DateFilter.TODAY],
+      value: DateFilter.TODAY,
     },
     {
-      label: translations[TransactionDate.WEEK],
-      value: TransactionDate.WEEK,
+      label: translations[DateFilter.WEEK],
+      value: DateFilter.WEEK,
     },
     {
       label: translations[monthName],
-      value: TransactionDate.MONTH,
+      value: DateFilter.MONTH,
     },
   ];
 
@@ -31,7 +31,7 @@ const useDateSelector = (
   const state = useContext(TableDataContext);
   const dispatch = useContext(TableDataDispatchContext);
 
-  const filterByDate = (dateFilter: TransactionDate) => {
+  const filterByDate = (dateFilter: DateFilter) => {
     dispatch({
       action: TransactionAction.CHANGE_DATE,
       payload: { dateFilter },

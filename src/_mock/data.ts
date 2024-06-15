@@ -1,7 +1,7 @@
 import { PaymentMethod } from '@/_models/paymentMethod.enum';
 import { TableData } from '@/_models/tableData.interface';
 import { Transaction } from '@/_models/transaction.interface';
-import { TransactionDate } from '@/_models/transactionDate.enum';
+import { DateFilter } from '@/_models/dateFilter.enum';
 import { TransactionStatus } from '@/_models/transactionStatus.enum';
 
 const delay = async () => new Promise((resolve) => setTimeout(resolve, 0));
@@ -175,7 +175,7 @@ const transactions: Transaction[] = [
 const transactionData: TableData = {
   transactions: transactions,
   totalSales: 325485,
-  dateFilter: TransactionDate.TODAY,
+  dateFilter: DateFilter.TODAY,
   paymentMethods: [PaymentMethod.DATAPHONE, PaymentMethod.LINK],
   monthName: 'June',
 };

@@ -53,7 +53,9 @@ const TableDesktop = ({ translations }: TableProps) => {
                         fill={true}
                       />
                     </div>
-                    <span className={Style.status}>{transaction.status}</span>
+                    <span className={Style.status}>
+                      {translations[transaction.status]}
+                    </span>
                   </div>
                 </td>
 

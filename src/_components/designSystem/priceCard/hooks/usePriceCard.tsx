@@ -1,11 +1,13 @@
 import { currentDate } from '@/_mock/data';
+import { DateFilter } from '@/_models/dateFilter.enum';
 import { TableData } from '@/_models/tableData.interface';
 
 const usePriceCard = (
-  { dateFilter, monthName, totalSales }: TableData,
+  { dateFilter, monthName = '', totalSales }: TableData,
   translations: { [key: string]: string }
 ) => {
-  const title = `${translations.totalSalesOf} ${translations[dateFilter]}`;
+  const month = dateFilter === DateFilter.TODAY ? translations[monthName] : '';
+  const title = `${translations.totalSalesOf} ${month} ${translations[dateFilter]}`;
   const dayNumber = new Date(currentDate).getDate();
   const total = `$ ${totalSales.toLocaleString()}`;
 

@@ -12,6 +12,7 @@ const PriceCard = ({ translations }: PriceCardProps) => {
     title,
     total: totalSales,
     dayNumber,
+    monthName,
   } = usePriceCard(transactionData, translations);
 
   return (
@@ -27,7 +28,7 @@ const PriceCard = ({ translations }: PriceCardProps) => {
           <div className={Style.value}>{totalSales}</div>
 
           <div className={Style.date}>
-            {translations.monthName} {dayNumber}
+            {translations[monthName]} {dayNumber}
           </div>
         </div>
       </article>
