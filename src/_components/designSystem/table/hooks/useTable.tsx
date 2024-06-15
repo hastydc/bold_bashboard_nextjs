@@ -1,7 +1,6 @@
 import { getLabels } from '@/mock/data';
 import { PaymentMethod } from '@/models/paymentMethod.enum';
 import { TransactionData } from '@/models/transactionData.interface';
-import { useTranslations } from 'next-intl';
 
 const _visa = new RegExp('^4[0-9]{12}(?:[0-9]{3})?$');
 
@@ -12,9 +11,13 @@ const _fileName: { [key: string]: string } = {
   [PaymentMethod.LINK]: 'icon-chain',
 };
 
-const useTable = ({ dateFilter, monthName, transactions }: TransactionData) => {
-  const t = useTranslations();
-  const title = `${t('yourSalesOf')} ${getLabels(monthName)[dateFilter]}`;
+const useTable = (
+  { dateFilter, monthName, transactions }: TransactionData,
+  translations: { [key: string]: string }
+) => {
+  const title = `${translations.yourSalesOf} ${
+    getLabels(monthName)[dateFilter]
+  }`;
 
   return { title, transactions };
 };

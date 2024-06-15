@@ -1,14 +1,16 @@
-import { TransactionData } from '@/models/transactionData.interface';
+'use client';
+
 import Style from '../table.module.scss';
 import useTable from '../hooks/useTable';
 import TransactionCard from './transaction-card/TransactionCard';
-import { useTranslations } from 'next-intl';
+import { transactionData } from '@/mock/data';
 
-type TableProps = TransactionData;
+type TableProps = {
+  translations: { [key: string]: string };
+};
 
-const TableMobile = (tableProps: TableProps) => {
-  const { title, transactions } = useTable(tableProps);
-  const t = useTranslations();
+const TableMobile = ({ translations }: TableProps) => {
+  const { title, transactions } = useTable(transactionData, translations);
 
   return (
     <>
@@ -18,7 +20,7 @@ const TableMobile = (tableProps: TableProps) => {
 
           {transactions.map((transaction) => (
             <TransactionCard
-              translations={t.raw('table')}
+              translations={translations}
               transaction={transaction}
               key={transaction.id}
             />

@@ -4,7 +4,6 @@
   "showOrHideMenu": "Mostrar u ocultar el menu",
   "myBusiness": "Mi negocio",
   "help": "Ayuda",
-  "yourSalesOf": "Tus ventas de",
   "filter": "Filtrar",
   "dataphonePayment": "Cobro con datáfono",
   "linkPayment": "Cobro con link de pago",
@@ -42,6 +41,7 @@
     "boldDeduction": "Deducción Bold",
     "see": "Ver",
     "seeMore": "Ver más",
-    "seeLess": "Ver menos"
+    "seeLess": "Ver menos",
+    "yourSalesOf": "Tus ventas de"
   }
 }

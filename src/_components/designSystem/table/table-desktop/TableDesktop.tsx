@@ -1,23 +1,25 @@
-import { TransactionData } from '@/models/transactionData.interface';
+'use client';
+
 import Style from '../table.module.scss';
 import useTable, { useTablePipes } from '../hooks/useTable';
 import useTableDesktop from './hooks/useTableDesktop';
 import Image from 'next/image';
 import { TransactionStatus } from '@/models/transactionStatus.enum';
-import { useTranslations } from 'next-intl';
+import { transactionData, transactions } from '@/mock/data';
 
-type TableProps = TransactionData;
+type TableProps = {
+  translations: { [key: string]: string };
+};
 
-const TableDesktop = (tableProps: TableProps) => {
+const TableDesktop = ({ translations }: TableProps) => {
   const { tableHeaders, getTdClassName } = useTableDesktop();
-  const { title } = useTable(tableProps);
+  const { title } = useTable(transactionData, translations);
   const {
     formatCardNumber,
     getCreditCardIcon,
     getPaymentMethodIcon,
     formatDate,
   } = useTablePipes();
-  const t = useTranslations();
 
   return (
     <>
@@ -33,20 +35,20 @@ const TableDesktop = (tableProps: TableProps) => {
             <tr>
               {tableHeaders.map((header: string) => (
                 <th className={Style.th} key={header}>
-                  {header}
+                  {translations[header]}
                 </th>
               ))}
             </tr>
           </thead>
 
           <tbody>
-            {tableProps.transactions.map((transaction) => (
+            {transactions.map((transaction) => (
               <tr key={transaction.id}>
                 <td className={getTdClassName(transaction.status)}>
                   <div className={Style.content}>
                     <div className={Style.icon}>
                       <Image
-                        alt={t('table.typeOfPayment')}
+                        alt={translations.typeOfPayment}
                         src={getPaymentMethodIcon(transaction.paymentMethod)}
                         fill={true}
                       />
@@ -67,7 +69,7 @@ const TableDesktop = (tableProps: TableProps) => {
                   <div className={`${Style.content}`}>
                     <div className={Style.iconCard}>
                       <Image
-                        alt={t('table.card')}
+                        alt={translations.card}
                         src={getCreditCardIcon(transaction.cardNumber)}
                         fill={true}
                       />
@@ -93,7 +95,7 @@ const TableDesktop = (tableProps: TableProps) => {
                         <div
                           className={`${Style.deductionLabel} ${Style.tableGray}`}
                         >
-                          {t('table.boldDeduction')}
+                          {translations.boldDeduction}
                         </div>
 
                         <div

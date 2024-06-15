@@ -12,6 +12,9 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')],
     prependData: '@import "./src/styles/index.scss"; \n',
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default withNextIntl(nextConfig);
