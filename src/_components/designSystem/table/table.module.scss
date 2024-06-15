@@ -1,0 +1,143 @@
+.tableDesktop {
+  width: 100%;
+
+  @include media(tablet) {
+    display: table;
+  }
+}
+
+.table {
+  background-color: var(--color-gray-light);
+  border-radius: rem(16);
+  overflow: hidden;
+  box-shadow: $boxShadow;
+}
+
+.tableBlue {
+  color: var(--color-blue);
+  font-weight: 600;
+}
+
+.tableGray {
+  color: var(--color-gray-dark);
+}
+
+.tableRed {
+  color: var(--color-red);
+}
+
+.th {
+  text-align: left;
+  box-sizing: border-box;
+  padding: rem(16) rem(32);
+  font-size: rem(18);
+  font-weight: 600;
+  color: var(--color-main-contrast);
+}
+
+.thHead {
+  background: var(--color-gradient);
+  color: var(--color-text-gray);
+  font-size: rem(24);
+}
+
+.td {
+  box-sizing: border-box;
+  padding: rem(16) rem(32);
+  border-top: rem(1) solid rgba($colorGrayDark, 0.2);
+  vertical-align: top;
+}
+
+.tdBlue {
+  border-left: rem(4) solid var(--color-main-contrast);
+}
+
+.tdGray {
+  border-left: rem(4) solid rgba($colorGrayDark, 1);
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: rem(8);
+  min-height: rem(32);
+  color: var(--color-main-contrast);
+
+  @include media(mobile) {
+    border-bottom: rem(1) solid rgba($colorGrayDark, 1);
+    box-sizing: border-box;
+    padding-bottom: rem(8) rem(0) rem(16);
+  }
+
+  &:last-of-type {
+    @include media(mobile) {
+      border: 0;
+    }
+  }
+}
+
+.contentCol {
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.icon {
+  height: rem(16);
+  width: rem(16);
+  background-color: var(--color-text-gray);
+  box-sizing: border-box;
+  padding: rem(2);
+  border-radius: rem(4);
+  position: relative;
+}
+
+.iconCard {
+  height: rem(32);
+  width: rem(32);
+  position: relative;
+}
+
+.deductionLabel {
+  font-size: rem(14);
+}
+
+.deductionAmount {
+  font-size: rem(14);
+}
+
+.label {
+  margin: rem(8) 0;
+  font-size: rem(12);
+  color: var(--color-main-contrast);
+}
+
+.expand {
+  position: relative;
+  display: none;
+  flex-direction: column;
+}
+
+.expandActive {
+  display: flex;
+}
+
+.btn {
+  z-index: 1;
+  width: 100%;
+  background-color: var(--color-red);
+  box-sizing: border-box;
+  padding: rem(8);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: rem(2);
+  width: rem(150);
+  color: var(--color-text-gray);
+  border: 0;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  border-radius: rem(32);
+  margin: rem(8) auto;
+}
