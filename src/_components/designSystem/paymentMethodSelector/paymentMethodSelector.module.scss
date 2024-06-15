@@ -1,0 +1,119 @@
+.paymentMethodSelector {
+  position: relative;
+  border-radius: rem(16);
+  background-color: var(--color-gray-light);
+  box-shadow: $boxShadow;
+  border: rem(1) solid var(--color-text-gray);
+}
+
+.headerBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: rem(8);
+  gap: rem(16);
+  min-width: rem(300);
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  z-index: 8;
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  min-height: rem(40);
+  color: var(--color-main-contrast);
+}
+
+.iconWrapper {
+  width: rem(16);
+  height: rem(16);
+  display: flex;
+  position: relative;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  padding: rem(2);
+  border-radius: rem(4);
+  transform: rotate(0deg) scale(0);
+  transition: 0.25s ease-in-out;
+}
+
+.active {
+  transform: scale(1);
+}
+
+.activeRotate {
+  transform: rotate(90deg) scale(1);
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.list {
+  opacity: 0;
+  height: 0;
+  list-style-type: none;
+  box-sizing: border-box;
+  padding: rem(16) rem(16);
+  transition: 0.5s ease-in-out;
+  gap: rem(16);
+  border-radius: rem(16);
+  background-color: var(--color-gray-light);
+  box-shadow: $boxShadow;
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  top: 0%;
+  z-index: 5;
+}
+
+.listActive {
+  visibility: visible;
+  display: flex;
+  opacity: 1;
+  height: rem(211);
+  flex-direction: column;
+  top: calc(100% + rem(8));
+}
+
+.option {
+  font-size: rem(20);
+  cursor: pointer;
+  color: var(--color-main-contrast);
+  font-weight: 600;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: rem(8);
+  align-items: center;
+}
+
+.btn {
+  background-color: var(--color-red);
+  font-weight: 600;
+  color: var(--color-text-gray);
+  border: 0;
+  width: 75%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: rem(12);
+  border-radius: rem(32);
+  cursor: pointer;
+  font-size: rem(20);
+  display: flex;
+  justify-content: center;
+  transition: 0.5s ease-in-out;
+
+  &[disabled] {
+    background-color: rgba($colorRed, 0.5);
+    cursor: not-allowed;
+  }
+}
