@@ -5,10 +5,13 @@ import { TransactionDate } from '@/models/transactionDate.enum';
 import { PaymentMethod } from '@/models/paymentMethod.enum';
 import DateSelector from '../designSystem/dateSelector/DateSelector';
 import PaymentMethodSelector from '../designSystem/paymentMethodSelector/PaymentMethodSelector';
+import TableMobile from '../designSystem/table/table-mobile/TableMobile';
+import TableDesktop from '../designSystem/table/table-desktop/TableDesktop';
+import { transactions } from '@/mock/data';
 
 const Dashboard = () => {
   const transactionData: TransactionData = {
-    transactions: [],
+    transactions: transactions,
     totalSales: 325485,
     dateFilter: TransactionDate.TODAY,
     paymentMethods: [PaymentMethod.DATAPHONE, PaymentMethod.LINK],
@@ -34,7 +37,15 @@ const Dashboard = () => {
           </div>
         </section>
 
-        <section className={Style.table}></section>
+        <section className={Style.table}>
+          <div className={Style.tableMobile}>
+            <TableMobile {...transactionData} />
+          </div>
+
+          <div className={Style.tableDesktop}>
+            <TableDesktop {...transactionData} />
+          </div>
+        </section>
       </div>
     </>
   );

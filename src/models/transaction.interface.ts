@@ -6,7 +6,7 @@ export interface Transaction {
   status: TransactionStatus;
   paymentMethod: PaymentMethod;
   createdAt: number | string;
-  cardNumber: number | string;
+  cardNumber: string;
   amount: number;
   deduction?: number;
 }
