@@ -6,7 +6,7 @@ import DateSelector from '../designSystem/dateSelector/DateSelector';
 import PaymentMethodSelector from '../designSystem/paymentMethodSelector/PaymentMethodSelector';
 import TableMobile from '../designSystem/table/table-mobile/TableMobile';
 import TableDesktop from '../designSystem/table/table-desktop/TableDesktop';
-import TransactionDataProvider from '@/_providers/transactionData.provider';
+import TableDataProvider from '@/_providers/tableData.provider';
 
 type DashboardProps = {
   translationsDate: { [key: string]: string };
@@ -21,7 +21,7 @@ const Dashboard = ({
 }: DashboardProps) => {
   return (
     <>
-      <TransactionDataProvider>
+      <TableDataProvider>
         <div className={Style.dashboard}>
           <section className={Style.header}>
             <div className={Style.card}>
@@ -49,7 +49,7 @@ const Dashboard = ({
             </div>
           </section>
         </div>
-      </TransactionDataProvider>
+      </TableDataProvider>
     </>
   );
 };

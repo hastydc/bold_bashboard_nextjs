@@ -1,6 +1,5 @@
-import { getLabels } from '@/_mock/data';
 import { PaymentMethod } from '@/_models/paymentMethod.enum';
-import { TransactionData } from '@/_models/transactionData.interface';
+import { TableData } from '@/_models/tableData.interface';
 
 const _visa = new RegExp('^4[0-9]{12}(?:[0-9]{3})?$');
 
@@ -12,12 +11,11 @@ const _fileName: { [key: string]: string } = {
 };
 
 const useTable = (
-  { dateFilter, monthName, transactions }: TransactionData,
+  { dateFilter, monthName, transactions }: TableData,
   translations: { [key: string]: string }
 ) => {
-  const title = `${translations.yourSalesOf} ${
-    getLabels(monthName)[dateFilter]
-  }`;
+  console.log(translations, dateFilter, monthName);
+  const title = `${translations.yourSalesOf} ${translations[dateFilter]}`;
 
   return { title, transactions };
 };

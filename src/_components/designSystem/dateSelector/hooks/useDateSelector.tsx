@@ -1,14 +1,15 @@
+import { TableData } from '@/_models/tableData.interface';
 import { TransactionAction } from '@/_models/transactionAction.enum';
-import { TransactionData } from '@/_models/transactionData.interface';
 import { TransactionDate } from '@/_models/transactionDate.enum';
 import {
-  TransactionDataContext,
-  TransactionDataDispatchContext,
-} from '@/_providers/transactionData.provider';
+  TableDataContext,
+  TableDataDispatchContext,
+} from '@/_providers/tableData.provider';
+
 import { useContext, useEffect, useState } from 'react';
 
 const useDateSelector = (
-  { monthName = '', dateFilter: baseDateFilter }: TransactionData,
+  { monthName = '', dateFilter: baseDateFilter }: TableData,
   translations: { [key: string]: string }
 ) => {
   const options = [
@@ -27,8 +28,8 @@ const useDateSelector = (
   ];
 
   const [dateFilter, setDateFilter] = useState(baseDateFilter);
-  const state = useContext(TransactionDataContext);
-  const dispatch = useContext(TransactionDataDispatchContext);
+  const state = useContext(TableDataContext);
+  const dispatch = useContext(TableDataDispatchContext);
 
   const filterByDate = (dateFilter: TransactionDate) => {
     dispatch({

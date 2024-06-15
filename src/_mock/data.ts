@@ -1,16 +1,10 @@
 import { PaymentMethod } from '@/_models/paymentMethod.enum';
+import { TableData } from '@/_models/tableData.interface';
 import { Transaction } from '@/_models/transaction.interface';
-import { TransactionData } from '@/_models/transactionData.interface';
 import { TransactionDate } from '@/_models/transactionDate.enum';
 import { TransactionStatus } from '@/_models/transactionStatus.enum';
 
 const delay = async () => new Promise((resolve) => setTimeout(resolve, 0));
-
-export const getLabels = (monthName: string = '') => ({
-  [TransactionDate.MONTH]: monthName,
-  [TransactionDate.TODAY]: 'hoy',
-  [TransactionDate.WEEK]: 'esta semana',
-});
 
 const currentDate: number = 1718287180315;
 
@@ -178,7 +172,7 @@ const transactions: Transaction[] = [
   },
 ];
 
-const transactionData: TransactionData = {
+const transactionData: TableData = {
   transactions: transactions,
   totalSales: 325485,
   dateFilter: TransactionDate.TODAY,
