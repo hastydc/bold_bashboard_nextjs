@@ -20,7 +20,9 @@ const PaymentMethodSelector = ({ translations }: PaymentMethodProps) => {
           aria-label={translations.filter}
           className={Style.headerBtn}
           onClick={() => toggleList()}
-          onKeyUp={() => toggleList()}
+          onKeyDown={({ key }) => {
+            if (key === 'Enter') toggleList();
+          }}
         >
           <span className={Style.title}>{translations.filter}</span>
 
@@ -59,7 +61,9 @@ const PaymentMethodSelector = ({ translations }: PaymentMethodProps) => {
               aria-label={translations.apply}
               disabled={true}
               onClick={() => filter()}
-              onKeyUp={() => filter()}
+              onKeyDown={({ key }) => {
+                if (key === 'Enter') filter();
+              }}
             >
               {translations.apply}
             </button>

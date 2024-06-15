@@ -17,7 +17,9 @@ const MenuIcon = ({ btnLabel }: MenuIconProps) => {
         className={Style.menuIcon}
         aria-label={btnLabel}
         onClick={() => toggleMenu()}
-        onKeyUp={() => toggleMenu()}
+        onKeyDown={({ key }) => {
+          if (key === 'Enter') toggleMenu();
+        }}
       >
         <FaBars className={`${Style.icon} ${!showMenu ? Style.active : ''}`} />
 
