@@ -1,6 +1,6 @@
 import { Dispatch, createContext, useReducer } from 'react';
-import transactionDataReducer, {
-  TransactionDataReducerProps,
+import tableDataReducer, {
+  TableDataReducerProps,
 } from '../_hooks/tableData.reducer';
 import { transactionData } from '@/_mock/data';
 import { TableData } from '@/_models/tableData.interface';
@@ -8,7 +8,7 @@ import { TableData } from '@/_models/tableData.interface';
 export const TableDataContext = createContext<TableData>(transactionData);
 
 export const TableDataDispatchContext = createContext<
-  Dispatch<TransactionDataReducerProps>
+  Dispatch<TableDataReducerProps>
 >(() => undefined);
 
 type ProviderProps = {
@@ -16,7 +16,7 @@ type ProviderProps = {
 };
 
 const TableDataProvider = ({ children }: ProviderProps) => {
-  const [state, dispatch] = useReducer(transactionDataReducer, transactionData);
+  const [state, dispatch] = useReducer(tableDataReducer, transactionData);
 
   return (
     <>

@@ -1,22 +1,26 @@
 import { TableData } from '@/_models/tableData.interface';
 import { TransactionAction } from '@/_models/transactionAction.enum';
 
-export type TransactionDataReducerProps = {
+export type TableDataReducerProps = {
   action: TransactionAction;
   payload: Partial<TableData>;
 };
 
-const transactionDataReducer = (
-  state: any,
-  { action, payload }: TransactionDataReducerProps
+const tableDataReducer = (
+  state: TableData,
+  { action, payload }: TableDataReducerProps
 ) => {
   let response = state;
 
   if (action === TransactionAction.CHANGE_DATE) {
-    response = { ...state, dateFilter: payload.dateFilter };
+    response = { ...state, dateFilter: payload.dateFilter! };
+  }
+
+  if (action === TransactionAction.CHANGE_PAYMENT_TYPE) {
+    response = { ...state };
   }
 
   return response;
 };
 
-export default transactionDataReducer;
+export default tableDataReducer;
