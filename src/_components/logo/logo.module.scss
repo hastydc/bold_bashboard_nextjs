@@ -1,0 +1,8 @@
+.logo {
+  width: auto;
+  height: rem(32);
+
+  @include media(tablet) {
+    height: rem(64);
+  }
+}

@@ -1,0 +1,15 @@
+.menuDesktop {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  gap: rem(32);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-text-gray);
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  font-weight: 600;
+}
