@@ -18,7 +18,9 @@ const MenuTheme = ({ btnLabel }: MenuThemeProps) => {
         className={Style.menuTheme}
         aria-label={btnLabel}
         onClick={() => updateTheme()}
-        onKeyUp={() => updateTheme()}
+        onKeyDown={({ key }) => {
+          if (key === 'Enter') updateTheme();
+        }}
       >
         <FaSun
           className={`${Style.iconLight} ${
