@@ -1,9 +1,9 @@
+import { TableData } from '@/_models/tableData.interface';
 import { TransactionAction } from '@/_models/transactionAction.enum';
-import { TransactionData } from '@/_models/transactionData.interface';
 
 export type TransactionDataReducerProps = {
   action: TransactionAction;
-  payload: Partial<TransactionData>;
+  payload: Partial<TableData>;
 };
 
 const transactionDataReducer = (

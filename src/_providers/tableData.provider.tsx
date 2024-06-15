@@ -1,7 +1,7 @@
 import { Dispatch, createContext, useReducer } from 'react';
 import transactionDataReducer, {
   TransactionDataReducerProps,
-} from './reducers/tableData.reducer';
+} from '../_hooks/tableData.reducer';
 import { transactionData } from '@/_mock/data';
 import { TableData } from '@/_models/tableData.interface';
 
