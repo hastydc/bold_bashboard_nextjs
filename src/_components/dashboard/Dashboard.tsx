@@ -1,27 +1,22 @@
-import { TransactionData } from '@/models/transactionData.interface';
 import PriceCard from '../designSystem/priceCard/PriceCard';
 import Style from './dashboard.module.scss';
-import { TransactionDate } from '@/models/transactionDate.enum';
-import { PaymentMethod } from '@/models/paymentMethod.enum';
 import DateSelector from '../designSystem/dateSelector/DateSelector';
 import PaymentMethodSelector from '../designSystem/paymentMethodSelector/PaymentMethodSelector';
 import TableMobile from '../designSystem/table/table-mobile/TableMobile';
 import TableDesktop from '../designSystem/table/table-desktop/TableDesktop';
-import { delay, transactions } from '@/mock/data';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
+import { delay } from '@/mock/data';
+import useDashboardApi from './api/useDashboard.api';
+import { TransactionData } from '@/models/transactionData.interface';
 
 const Dashboard = async () => {
-  await delay();
-
-  const transactionData: TransactionData = {
-    transactions: transactions,
-    totalSales: 325485,
-    dateFilter: TransactionDate.TODAY,
-    paymentMethods: [PaymentMethod.DATAPHONE, PaymentMethod.LINK],
-    monthName: 'June',
-  };
   const t = await getTranslations();
+
+  const { getData } = useDashboardApi();
+  const transactionData: TransactionData = await getData();
+
+  await delay();
 
   return (
     <>
@@ -48,11 +43,13 @@ const Dashboard = async () => {
 
         <section className={Style.table}>
           <div className={Style.tableMobile}>
-            <TableMobile {...transactionData} />
+            <TableMobile translations={t.raw('table')} />
           </div>
 
           <div className={Style.tableDesktop}>
-            <TableDesktop {...transactionData} />
+            <Suspense>
+              <TableDesktop translations={t.raw('table')} />
+            </Suspense>
           </div>
         </section>
       </div>

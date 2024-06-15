@@ -21,7 +21,7 @@ const useTransactionCard = (transaction: Transaction) => {
 
   useEffect(() => {
     setClass();
-  }, [transaction]);
+  }, [transaction, setClass]);
 
   return { baseClassName, showMore, setShowMore };
 };
