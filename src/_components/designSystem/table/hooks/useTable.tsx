@@ -38,11 +38,21 @@ export const useTablePipes = () => {
     return `${url}/icon-credit-card.svg`;
   };
 
-  const getPaymentMethodIcon = (value: string) => {
+  const getPaymentMethodIcon = (value: string): string => {
     return `/icons/${_fileName[value]}.svg`;
   };
 
-  return { formatCardNumber, getCreditCardIcon, getPaymentMethodIcon };
+  const formatDate = (value: number | string): string => {
+    const date = new Date(value);
+    return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()} - ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  };
+
+  return {
+    formatCardNumber,
+    getCreditCardIcon,
+    getPaymentMethodIcon,
+    formatDate,
+  };
 };
 
 export default useTable;

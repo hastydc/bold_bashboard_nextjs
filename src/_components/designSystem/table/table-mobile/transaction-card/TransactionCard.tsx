@@ -10,8 +10,12 @@ import Image from 'next/image';
 type TransactionCardProps = Transaction;
 
 const TransactionCard = (transactionCardProps: TransactionCardProps) => {
-  const { formatCardNumber, getCreditCardIcon, getPaymentMethodIcon } =
-    useTablePipes();
+  const {
+    formatCardNumber,
+    getCreditCardIcon,
+    getPaymentMethodIcon,
+    formatDate,
+  } = useTablePipes();
 
   const { baseClassName, showMore, setShowMore } =
     useTransactionCard(transactionCardProps);
@@ -35,7 +39,7 @@ const TransactionCard = (transactionCardProps: TransactionCardProps) => {
           {'Fecha y hora'}
         </h4>
         <div className={`${Style.content} ${Style.tableGray}`}>
-          {transactionCardProps.createdAt}
+          {formatDate(transactionCardProps.createdAt)}
         </div>
 
         <div
