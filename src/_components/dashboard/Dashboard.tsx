@@ -7,10 +7,13 @@ import DateSelector from '../designSystem/dateSelector/DateSelector';
 import PaymentMethodSelector from '../designSystem/paymentMethodSelector/PaymentMethodSelector';
 import TableMobile from '../designSystem/table/table-mobile/TableMobile';
 import TableDesktop from '../designSystem/table/table-desktop/TableDesktop';
-import { transactions } from '@/mock/data';
-import { useTranslations } from 'next-intl';
+import { delay, transactions } from '@/mock/data';
+import { getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
 
-const Dashboard = () => {
+const Dashboard = async () => {
+  await delay();
+
   const transactionData: TransactionData = {
     transactions: transactions,
     totalSales: 325485,
@@ -18,14 +21,16 @@ const Dashboard = () => {
     paymentMethods: [PaymentMethod.DATAPHONE, PaymentMethod.LINK],
     monthName: 'June',
   };
-  const t = useTranslations();
+  const t = await getTranslations();
 
   return (
     <>
       <div className={Style.dashboard}>
         <section className={Style.header}>
           <div className={Style.card}>
-            <PriceCard />
+            <Suspense fallback={<>Loading...</>}>
+              <PriceCard />
+            </Suspense>
           </div>
 
           <div className={Style.actions}>

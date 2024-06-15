@@ -1,6 +1,8 @@
 import Header from '@/_components/layout/header/Header';
 import Content from '@/_components/layout/content/Content';
 import Dashboard from '@/_components/dashboard/Dashboard';
+import { Suspense } from 'react';
+import DashboardSkeleton from '@/_components/skeletons/dashboard-skeleton/DashboardSkeleton';
 
 const Home = () => {
   return (
@@ -9,7 +11,9 @@ const Home = () => {
         <Header />
 
         <Content>
-          <Dashboard />
+          <Suspense fallback={<DashboardSkeleton />}>
+            <Dashboard />
+          </Suspense>
         </Content>
       </main>
     </>

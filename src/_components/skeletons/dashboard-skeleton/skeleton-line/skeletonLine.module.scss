@@ -1,0 +1,24 @@
+.skeletonLine {
+  width: 90%;
+  height: 50%;
+  border-radius: rem(16);
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    var(--color-text-gray),
+    var(--color-gray-dark)
+  );
+  background-size: 200%;
+  background-position: left;
+  animation: load 1s ease-out 0s infinite normal;
+}
+
+@keyframes load {
+  0%,
+  100% {
+    background-position: right;
+  }
+  50% {
+    background-position: left;
+  }
+}
