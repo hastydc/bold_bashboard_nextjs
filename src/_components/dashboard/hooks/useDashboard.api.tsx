@@ -1,14 +1,16 @@
-import { TableData } from '@/_models/tableData.interface';
+import { transactionData } from '@/_mock/data';
+import { Transaction } from '@/_models/transaction.interface';
 
 const useDashboardApi = () => {
-  const getData = async (): Promise<TableData> => {
-    const response = await fetch(`${process.env.API_URL}/transaction-data`);
-    const transactionData: TableData = await response.json();
+  const getTransactions = async (): Promise<Transaction[]> => {
+    const response = await fetch(`${process.env.API_URL}/transactions`);
+    const transactions: Transaction[] =
+      (await response.json()) ?? transactionData.transactions;
 
-    return transactionData;
+    return transactions;
   };
 
-  return { getData };
+  return { getTransactions };
 };
 
 export default useDashboardApi;

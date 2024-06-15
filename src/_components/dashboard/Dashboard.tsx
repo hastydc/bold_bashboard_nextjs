@@ -7,18 +7,25 @@ import PaymentMethodSelector from '../designSystem/paymentMethodSelector/Payment
 import TableMobile from '../designSystem/table/table-mobile/TableMobile';
 import TableDesktop from '../designSystem/table/table-desktop/TableDesktop';
 import TableDataProvider from '@/_providers/tableData.provider';
+import { Transaction } from '@/_models/transaction.interface';
+import { useContext } from 'react';
+import useDashboard from './hooks/useDashboard';
 
 type DashboardProps = {
   translationsDate: { [key: string]: string };
   translationsPayment: { [key: string]: string };
   translationsTable: { [key: string]: string };
+  transactions: Transaction[];
 };
 
 const Dashboard = ({
   translationsDate,
   translationsPayment,
   translationsTable,
+  transactions,
 }: DashboardProps) => {
+  // useDashboard(transactions);
+
   return (
     <>
       <TableDataProvider>

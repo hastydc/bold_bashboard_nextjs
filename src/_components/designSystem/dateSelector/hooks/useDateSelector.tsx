@@ -1,5 +1,5 @@
 import { TableData } from '@/_models/tableData.interface';
-import { TransactionAction } from '@/_models/transactionAction.enum';
+import { TableAction } from '@/_models/tableAction.enum';
 import { DateFilter } from '@/_models/dateFilter.enum';
 import {
   TableDataContext,
@@ -29,11 +29,11 @@ const useDateSelector = (
 
   const [dateFilter, setDateFilter] = useState(baseDateFilter);
   const state = useContext(TableDataContext);
-  const dispatch = useContext(TableDataDispatchContext);
+  const tableDataDispatch = useContext(TableDataDispatchContext);
 
   const filterByDate = (dateFilter: DateFilter) => {
-    dispatch({
-      action: TransactionAction.CHANGE_DATE,
+    tableDataDispatch({
+      action: TableAction.CHANGE_DATE,
       payload: { dateFilter },
     });
   };
