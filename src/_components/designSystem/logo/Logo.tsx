@@ -12,7 +12,7 @@ const Logo = () => {
         <Image
           width={180}
           height={64}
-          alt='Bold'
+          alt={t('bold')}
           src={'/images/logo-bold-white.svg'}
           className={Style.logo}
         />

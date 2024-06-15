@@ -4,6 +4,7 @@ import useTable, { useTablePipes } from '../hooks/useTable';
 import useTableDesktop from './hooks/useTableDesktop';
 import Image from 'next/image';
 import { TransactionStatus } from '@/models/transactionStatus.enum';
+import { useTranslations } from 'next-intl';
 
 type TableProps = TransactionData;
 
@@ -16,6 +17,7 @@ const TableDesktop = (tableProps: TableProps) => {
     getPaymentMethodIcon,
     formatDate,
   } = useTablePipes();
+  const t = useTranslations();
 
   return (
     <>
@@ -44,7 +46,7 @@ const TableDesktop = (tableProps: TableProps) => {
                   <div className={Style.content}>
                     <div className={Style.icon}>
                       <Image
-                        alt='Tipo de cobro'
+                        alt={t('table.typeOfPayment')}
                         src={getPaymentMethodIcon(transaction.paymentMethod)}
                         fill={true}
                       />
@@ -65,7 +67,7 @@ const TableDesktop = (tableProps: TableProps) => {
                   <div className={`${Style.content}`}>
                     <div className={Style.iconCard}>
                       <Image
-                        alt='Número de tarjeta'
+                        alt={t('table.card')}
                         src={getCreditCardIcon(transaction.cardNumber)}
                         fill={true}
                       />
