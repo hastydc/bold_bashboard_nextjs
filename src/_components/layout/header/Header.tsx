@@ -5,11 +5,14 @@ import MenuIcon from './menu-mobile-icon/MenuIcon';
 import MenuDesktop from './menu-desktop/MenuDesktop';
 import MenuMobile from './menu-mobile/MenuMobile';
 import { MenuItem } from '@/models/menuItem.interface';
+import { useTranslations } from 'next-intl';
 
 const Header = () => {
+  const t = useTranslations();
+
   const menuItems: MenuItem[] = [
-    { link: '/', label: 'Mi negocio' },
-    { link: '/', label: 'Ayuda', info: '?' },
+    { link: '/', label: t('myBusiness') },
+    { link: '/', label: t('help'), info: '?' },
   ];
 
   return (
@@ -21,11 +24,11 @@ const Header = () => {
 
         <div className={Style.menu}>
           <div className={Style.menuTheme}>
-            <MenuTheme />
+            <MenuTheme btnLabel={t('switchTheme')} />
           </div>
 
           <div className={Style.menuIcon}>
-            <MenuIcon />
+            <MenuIcon btnLabel={t('showOrHideMenu')} />
           </div>
 
           <div className={Style.menuDesktop}>
@@ -33,7 +36,7 @@ const Header = () => {
           </div>
 
           <div className={Style.menuThemeDesktop}>
-            <MenuTheme />
+            <MenuTheme btnLabel={t('switchTheme')} />
           </div>
         </div>
       </header>

@@ -8,17 +8,18 @@ export const metadata: Metadata = {
   title: 'Bold Dashboard',
   description: 'Bold dashboard demo 2024 in NextJS',
   icons: {
-    icon: '/favicon.ico',
+    icon: './favicon.ico',
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+type LayoutProps = Readonly<{
   children: React.ReactNode;
-}>) {
+  locale: string;
+}>;
+
+const RootLayout = ({ children, locale }: LayoutProps) => {
   return (
-    <html lang='es'>
+    <html lang={locale}>
       <body className={montserrat.className}>
         <MainThemeProvider>
           <LayoutProvider>{children}</LayoutProvider>
@@ -26,4 +27,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

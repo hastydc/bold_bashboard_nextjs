@@ -4,9 +4,14 @@ import Style from './paymentMethodOption.module.scss';
 export type PaymentMethodOptionProps = {
   option: string;
   checked: boolean;
+  translations: { [key: string]: string };
 };
 
-const PaymentMethodOption = ({ option, checked }: PaymentMethodOptionProps) => {
+const PaymentMethodOption = ({
+  option,
+  checked,
+  translations,
+}: PaymentMethodOptionProps) => {
   return (
     <>
       <i
@@ -15,7 +20,7 @@ const PaymentMethodOption = ({ option, checked }: PaymentMethodOptionProps) => {
         }`}
       />
 
-      <span className={Style.text}>{option?.toString()}</span>
+      <span className={Style.text}>{translations[option?.toString()]}</span>
     </>
   );
 };

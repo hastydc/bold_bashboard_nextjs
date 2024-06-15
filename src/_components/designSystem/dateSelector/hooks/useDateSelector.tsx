@@ -1,21 +1,21 @@
-import { getLabels } from '@/mock/data';
 import { TransactionData } from '@/models/transactionData.interface';
 import { TransactionDate } from '@/models/transactionDate.enum';
 
-const useDateSelector = ({ monthName, dateFilter }: TransactionData) => {
-  const labels = getLabels(monthName);
-
+const useDateSelector = (
+  { monthName = '', dateFilter }: TransactionData,
+  translations: { [key: string]: string }
+) => {
   const options = [
     {
-      label: labels[TransactionDate.TODAY],
+      label: translations[TransactionDate.TODAY],
       value: TransactionDate.TODAY,
     },
     {
-      label: labels[TransactionDate.WEEK],
+      label: translations[TransactionDate.WEEK],
       value: TransactionDate.WEEK,
     },
     {
-      label: monthName,
+      label: translations[monthName],
       value: TransactionDate.MONTH,
     },
   ];

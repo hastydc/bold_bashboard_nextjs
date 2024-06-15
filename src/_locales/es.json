@@ -1,0 +1,47 @@
+{
+  "bold": "Bold",
+  "mainContent": "Contenido principal",
+  "showOrHideMenu": "Mostrar u ocultar el menu",
+  "myBusiness": "Mi negocio",
+  "help": "Ayuda",
+  "yourSalesOf": "Tus ventas de",
+  "filter": "Filtrar",
+  "dataphonePayment": "Cobro con datáfono",
+  "linkPayment": "Cobro con link de pago",
+  "seeAll": "Ver todos",
+  "apply": "Aplicar",
+  "transactionsNotFound": "No se encontraron transacciones",
+  "totalSales": "Ventas totales",
+  "switchTheme": "Cambiar tema",
+  "light": "Claro",
+  "dark": "Oscuro",
+  "sales": "Ventas",
+  "totalSalesOf": "Total de ventas de ",
+  "dateSelector": {
+    "June": "Junio",
+    "Today": "Hoy",
+    "Week": "Esta semana"
+  },
+  "paymentMethodKeys": {
+    "filter": "Filtrar",
+    "apply": "Aplicar",
+    "dataphonePayment": "Cobro con datáfono",
+    "linkPayment": "Cobro con link de pago",
+    "seeAll": "Ver todos"
+  },
+  "table": {
+    "transaction": "Transacción",
+    "typeOfPayment": "Tipo de cobro",
+    "successfulPayment": "Cobro exitoso",
+    "failedPayment": "Cobro no realizado",
+    "dateAndHour": "Fecha y hora",
+    "paymentMethod": "Método de pago",
+    "card": "Tarjeta",
+    "idTransactionBold": "ID transacción Bold",
+    "amount": "Monto",
+    "boldDeduction": "Deducción Bold",
+    "see": "Ver",
+    "seeMore": "Ver más",
+    "seeLess": "Ver menos"
+  }
+}

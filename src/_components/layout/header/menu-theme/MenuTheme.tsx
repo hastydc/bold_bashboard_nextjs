@@ -5,14 +5,18 @@ import Style from './menuTheme.module.scss';
 import { Theme } from '@/models/theme.enum';
 import useMenuTheme from './hooks/useMenuTheme';
 
-const MenuTheme = () => {
+type MenuThemeProps = {
+  btnLabel: string;
+};
+
+const MenuTheme = ({ btnLabel }: MenuThemeProps) => {
   const { theme, updateTheme } = useMenuTheme();
 
   return (
     <>
       <button
         className={Style.menuTheme}
-        aria-label='Cambiar tema'
+        aria-label={btnLabel}
         onClick={() => updateTheme()}
         onKeyUp={() => updateTheme()}
       >
