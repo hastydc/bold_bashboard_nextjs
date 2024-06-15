@@ -10,7 +10,6 @@
   "seeAll": "Ver todos",
   "apply": "Aplicar",
   "transactionsNotFound": "No se encontraron transacciones",
-  "totalSales": "Ventas totales",
   "switchTheme": "Cambiar tema",
   "light": "Claro",
   "dark": "Oscuro",
@@ -19,7 +18,8 @@
     "June": "Junio",
     "Today": "Hoy",
     "Week": "Esta semana",
-    "totalSalesOf": "Total de ventas de "
+    "totalSalesOf": "Total de ventas de ",
+    "sales": "Ventas"
   },
   "paymentMethodKeys": {
     "filter": "Filtrar",

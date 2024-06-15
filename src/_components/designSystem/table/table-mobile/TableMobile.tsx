@@ -10,7 +10,7 @@ type TableProps = {
 };
 
 const TableMobile = ({ translations }: TableProps) => {
-  const { title, transactions } = useTable(transactionData, translations);
+  const { title, tableData } = useTable(translations);
 
   return (
     <>
@@ -18,7 +18,7 @@ const TableMobile = ({ translations }: TableProps) => {
         <div className={Style.mobile}>
           <div className={`${Style.th} ${Style.thHead}`}>{title}</div>
 
-          {transactions.map((transaction) => (
+          {tableData.transactions.map((transaction) => (
             <TransactionCard
               translations={translations}
               transaction={transaction}

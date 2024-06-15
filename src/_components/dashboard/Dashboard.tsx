@@ -8,7 +8,6 @@ import TableMobile from '../designSystem/table/table-mobile/TableMobile';
 import TableDesktop from '../designSystem/table/table-desktop/TableDesktop';
 import TableDataProvider from '@/_providers/tableData.provider';
 import { Transaction } from '@/_models/transaction.interface';
-import { useContext } from 'react';
 import useDashboard from './hooks/useDashboard';
 
 type DashboardProps = {
@@ -24,7 +23,7 @@ const Dashboard = ({
   translationsTable,
   transactions,
 }: DashboardProps) => {
-  // useDashboard(transactions);
+  useDashboard(transactions);
 
   return (
     <>

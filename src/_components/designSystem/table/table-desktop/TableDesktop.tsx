@@ -5,7 +5,6 @@ import useTable, { useTablePipes } from '../hooks/useTable';
 import useTableDesktop from './hooks/useTableDesktop';
 import Image from 'next/image';
 import { TransactionStatus } from '@/_models/transactionStatus.enum';
-import { transactionData, transactions } from '@/_mock/data';
 
 type TableProps = {
   translations: { [key: string]: string };
@@ -13,7 +12,7 @@ type TableProps = {
 
 const TableDesktop = ({ translations }: TableProps) => {
   const { tableHeaders, getTdClassName } = useTableDesktop();
-  const { title } = useTable(transactionData, translations);
+  const { title, tableData } = useTable(translations);
   const {
     formatCardNumber,
     getCreditCardIcon,
@@ -42,7 +41,7 @@ const TableDesktop = ({ translations }: TableProps) => {
           </thead>
 
           <tbody>
-            {transactions.map((transaction) => (
+            {tableData.transactions.map((transaction) => (
               <tr key={transaction.id}>
                 <td className={getTdClassName(transaction.status)}>
                   <div className={Style.content}>

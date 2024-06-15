@@ -25,6 +25,8 @@ const usePaymentMethodSelector = () => {
           .map((key: string) => key as PaymentMethod),
       },
     });
+
+    setShowList(false);
   };
 
   return {

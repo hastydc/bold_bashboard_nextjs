@@ -1,19 +1,14 @@
 import Style from './priceCard.module.scss';
 import Tooltip from '../tooltip/Tooltip';
 import usePriceCard from './hooks/usePriceCard';
-import { transactionData } from '@/_mock/data';
+import { DateFilter } from '@/_models/dateFilter.enum';
 
 type PriceCardProps = {
   translations: { [key: string]: string };
 };
 
 const PriceCard = ({ translations }: PriceCardProps) => {
-  const {
-    title,
-    total: totalSales,
-    dayNumber,
-    monthName,
-  } = usePriceCard(transactionData, translations);
+  const { title, dayNumber, tableData } = usePriceCard(translations);
 
   return (
     <>
@@ -25,11 +20,17 @@ const PriceCard = ({ translations }: PriceCardProps) => {
         </div>
 
         <div className={Style.content}>
-          <div className={Style.value}>{totalSales}</div>
-
-          <div className={Style.date}>
-            {translations[monthName]} {dayNumber}
+          <div className={Style.value}>
+            $ {tableData.totalSales.toLocaleString()}
           </div>
+
+          {tableData.dateFilter === DateFilter.TODAY ? (
+            <div className={Style.date}>
+              {translations[tableData.monthName!]} {dayNumber}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </article>
     </>

@@ -1,11 +1,13 @@
 import { Transaction } from '@/_models/transaction.interface';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Style from '../../../table.module.scss';
 import { TransactionStatus } from '@/_models/transactionStatus.enum';
+import { TableDataContext } from '@/_providers/tableData.provider';
 
 const useTransactionCard = (transaction: Transaction) => {
   const [baseClassName, setBaseClassName] = useState('');
   const [showMore, setShowMore] = useState(false);
+  const tableData = useContext(TableDataContext);
 
   useEffect(() => {
     const setClass = () => {
@@ -22,6 +24,10 @@ const useTransactionCard = (transaction: Transaction) => {
 
     setClass();
   }, [transaction]);
+
+  useEffect(() => {
+    setShowMore(false);
+  }, [tableData]);
 
   return { baseClassName, showMore, setShowMore };
 };
