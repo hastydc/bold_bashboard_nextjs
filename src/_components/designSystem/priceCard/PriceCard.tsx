@@ -26,7 +26,7 @@ const PriceCard = (priceCardProps: PriceCardProps) => {
           <div className={Style.value}>{totalSales}</div>
 
           <div className={Style.date}>
-            {monthName} &nbsp; {dayNumber}
+            {monthName} {dayNumber}
           </div>
         </div>
       </article>

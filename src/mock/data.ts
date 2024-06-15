@@ -1,6 +1,13 @@
 import { PaymentMethod } from '@/models/paymentMethod.enum';
 import { Transaction } from '@/models/transaction.interface';
+import { TransactionDate } from '@/models/transactionDate.enum';
 import { TransactionStatus } from '@/models/transactionStatus.enum';
+
+export const getLabels = (monthName: string = '') => ({
+  [TransactionDate.MONTH]: monthName,
+  [TransactionDate.TODAY]: 'hoy',
+  [TransactionDate.WEEK]: 'esta semana',
+});
 
 const currentDate: number = 1718287180315;
 

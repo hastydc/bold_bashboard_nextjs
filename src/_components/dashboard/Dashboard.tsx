@@ -3,6 +3,7 @@ import PriceCard from '../designSystem/priceCard/PriceCard';
 import Style from './dashboard.module.scss';
 import { TransactionDate } from '@/models/transactionDate.enum';
 import { PaymentMethod } from '@/models/paymentMethod.enum';
+import DateSelector from '../designSystem/dateSelector/DateSelector';
 
 const Dashboard = () => {
   const transactionData: TransactionData = {
@@ -22,7 +23,9 @@ const Dashboard = () => {
           </div>
 
           <div className={Style.actions}>
-            <div className={Style.dateSelector}></div>
+            <div className={Style.dateSelector}>
+              <DateSelector {...transactionData} />
+            </div>
 
             <div className={Style.paymentSelector}></div>
           </div>
