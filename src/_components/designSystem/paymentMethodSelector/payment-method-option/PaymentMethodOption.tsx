@@ -1,36 +1,26 @@
-import { Selecteds } from '../hooks/usePaymentMethodSelector';
+import { PaymentMethod } from '@/_models/paymentMethod.enum';
 import Style from './paymentMethodOption.module.scss';
-import { Dispatch, SetStateAction } from 'react';
 
 export type PaymentMethodOptionProps = {
   option: string;
   checked: boolean;
   translations: { [key: string]: string };
-  selecteds: { [key: string]: boolean };
-  setSelecteds: Dispatch<SetStateAction<Selecteds>>;
+  setSelecteds: (option: string) => void;
 };
 
 const PaymentMethodOption = ({
   option,
   checked,
   translations,
-  selecteds,
   setSelecteds,
 }: PaymentMethodOptionProps) => {
-  const updateSelecteds = () => {
-    setSelecteds({
-      ...selecteds,
-      [option]: !selecteds[option] ?? false,
-    });
-  };
-
   return (
     <>
       <button
         className={Style.btn}
-        onClick={() => updateSelecteds()}
+        onClick={() => setSelecteds(option)}
         onKeyDown={({ key }) => {
-          if (key === 'Enter') updateSelecteds();
+          if (key === 'Enter') setSelecteds(option);
         }}
       >
         <i
