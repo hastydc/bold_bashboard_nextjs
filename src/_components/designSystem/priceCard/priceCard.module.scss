@@ -24,7 +24,7 @@
 .title {
   display: flex;
   flex: 1;
-  font-family: var(--font-semibold);
+  font-weight: 600;
   font-size: rem(14);
 
   @include media(tablet) {
@@ -49,7 +49,7 @@
 
 .value {
   font-size: rem(32);
-  font-family: var(--font-bold);
+  font-weight: 700;
   background: var(--color-gradient-red);
   background-clip: text;
   -webkit-background-clip: text;
