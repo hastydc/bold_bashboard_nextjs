@@ -15,7 +15,8 @@ const PaymentMethodSelector = ({ translations }: PaymentMethodProps) => {
     options,
     optionAll,
     selecteds,
-    setSelecteds,
+    disabled,
+    updateSelecteds,
     toggleList,
     filter,
   } = usePaymentMethodSelector();
@@ -50,8 +51,7 @@ const PaymentMethodSelector = ({ translations }: PaymentMethodProps) => {
                 translations={translations}
                 option={option}
                 checked={selecteds[option]}
-                selecteds={selecteds}
-                setSelecteds={setSelecteds}
+                setSelecteds={updateSelecteds}
               />
             </li>
           ))}
@@ -60,9 +60,8 @@ const PaymentMethodSelector = ({ translations }: PaymentMethodProps) => {
             <PaymentMethodOption
               translations={translations}
               option={optionAll}
-              checked={false}
-              selecteds={selecteds}
-              setSelecteds={setSelecteds}
+              checked={selecteds[optionAll]}
+              setSelecteds={updateSelecteds}
             />
           </li>
 
@@ -70,7 +69,7 @@ const PaymentMethodSelector = ({ translations }: PaymentMethodProps) => {
             <button
               className={Style.btn}
               aria-label={translations.apply}
-              disabled={false}
+              disabled={disabled}
               onClick={() => filter()}
               onKeyDown={({ key }) => {
                 if (key === 'Enter') filter();
