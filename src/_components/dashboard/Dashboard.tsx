@@ -8,6 +8,7 @@ import PaymentMethodSelector from '../designSystem/paymentMethodSelector/Payment
 import TableMobile from '../designSystem/table/table-mobile/TableMobile';
 import TableDesktop from '../designSystem/table/table-desktop/TableDesktop';
 import { transactions } from '@/mock/data';
+import { useTranslations } from 'next-intl';
 
 const Dashboard = () => {
   const transactionData: TransactionData = {
@@ -15,24 +16,27 @@ const Dashboard = () => {
     totalSales: 325485,
     dateFilter: TransactionDate.TODAY,
     paymentMethods: [PaymentMethod.DATAPHONE, PaymentMethod.LINK],
-    monthName: 'Junio',
+    monthName: 'June',
   };
+  const t = useTranslations();
 
   return (
     <>
       <div className={Style.dashboard}>
         <section className={Style.header}>
           <div className={Style.card}>
-            <PriceCard {...transactionData} />
+            <PriceCard />
           </div>
 
           <div className={Style.actions}>
             <div className={Style.dateSelector}>
-              <DateSelector {...transactionData} />
+              <DateSelector translations={t.raw('dateSelector')} />
             </div>
 
             <div className={Style.paymentSelector}>
-              <PaymentMethodSelector {...transactionData} />
+              <PaymentMethodSelector
+                translations={t.raw('paymentMethodKeys')}
+              />
             </div>
           </div>
         </section>

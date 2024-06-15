@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Bold Dashboard',
   description: 'Bold dashboard demo 2024 in NextJS',
   icons: {
-    icon: '/favicon.ico',
+    icon: './favicon.ico',
   },
 };
 

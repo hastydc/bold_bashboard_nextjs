@@ -1,21 +1,25 @@
 'use client';
 
-import { TransactionData } from '@/models/transactionData.interface';
 import Style from './dateSelector.module.scss';
 import useDateSelector from './hooks/useDateSelector';
+import { transactionData } from '@/mock/data';
 
-type DateSelectorProps = TransactionData;
+type DateSelectorProps = {
+  translations: { [key: string]: string };
+};
 
-const DateSelector = (dateSelectorProps: DateSelectorProps) => {
-  const { options, dateFilter, filterByDate } =
-    useDateSelector(dateSelectorProps);
+const DateSelector = ({ translations }: DateSelectorProps) => {
+  const { options, dateFilter, filterByDate } = useDateSelector(
+    transactionData,
+    translations
+  );
 
   return (
     <>
       <div className={Style.dateSelector}>
         {options.map(({ label, value }) => (
           <button
-            aria-label={label ?? value}
+            aria-label={label}
             key={value}
             className={`${Style.btn} ${
               value === dateFilter ? Style.active : ''
@@ -23,7 +27,7 @@ const DateSelector = (dateSelectorProps: DateSelectorProps) => {
             onClick={() => filterByDate(value)}
             onKeyUp={() => filterByDate(value)}
           >
-            {label ?? value}
+            {label}
           </button>
         ))}
       </div>

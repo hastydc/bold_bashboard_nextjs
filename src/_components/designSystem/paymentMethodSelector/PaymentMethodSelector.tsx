@@ -3,12 +3,13 @@
 import usePaymentMethodSelector from './hooks/usePaymentMethodSelector';
 import PaymentMethodOption from './payment-method-option/PaymentMethodOption';
 import Style from './paymentMethodSelector.module.scss';
-import { TransactionData } from '@/models/transactionData.interface';
 import { FaSliders, FaX } from 'react-icons/fa6';
 
-type PaymentProps = TransactionData;
+type PaymentMethodProps = {
+  translations: { [key: string]: string };
+};
 
-const PaymentMethodSelector = (paymentProps: PaymentProps) => {
+const PaymentMethodSelector = ({ translations }: PaymentMethodProps) => {
   const { showList, options, optionAll, toggleList, filter } =
     usePaymentMethodSelector();
 
@@ -16,12 +17,12 @@ const PaymentMethodSelector = (paymentProps: PaymentProps) => {
     <>
       <div className={Style.paymentMethodSelector}>
         <button
-          aria-label='Filtrar'
+          aria-label={translations.filter}
           className={Style.headerBtn}
           onClick={() => toggleList()}
           onKeyUp={() => toggleList()}
         >
-          <span className={Style.title}>{'Filtrar'}</span>
+          <span className={Style.title}>{translations.filter}</span>
 
           <div className={Style.iconWrapper}>
             <FaSliders
@@ -36,23 +37,31 @@ const PaymentMethodSelector = (paymentProps: PaymentProps) => {
         <ul className={`${Style.list} ${showList ? Style.listActive : ''}`}>
           {options.map((option) => (
             <li className={Style.option} key={option}>
-              <PaymentMethodOption option={option} checked={true} />
+              <PaymentMethodOption
+                translations={translations}
+                option={option}
+                checked={true}
+              />
             </li>
           ))}
 
           <li className={Style.option}>
-            <PaymentMethodOption option={optionAll} checked={false} />
+            <PaymentMethodOption
+              translations={translations}
+              option={optionAll}
+              checked={false}
+            />
           </li>
 
           <li className={Style.option}>
             <button
               className={Style.btn}
-              aria-label='Aplicar'
+              aria-label={translations.apply}
               disabled={true}
               onClick={() => filter()}
               onKeyUp={() => filter()}
             >
-              {'Aplicar'}
+              {translations.apply}
             </button>
           </li>
         </ul>

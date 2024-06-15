@@ -7,9 +7,15 @@ import { TransactionStatus } from '@/models/transactionStatus.enum';
 import { useTablePipes } from '../../hooks/useTable';
 import Image from 'next/image';
 
-type TransactionCardProps = Transaction;
+type TransactionCardProps = {
+  transaction: Transaction;
+  translations: { [key: string]: string };
+};
 
-const TransactionCard = (transactionCardProps: TransactionCardProps) => {
+const TransactionCard = ({
+  transaction,
+  translations,
+}: TransactionCardProps) => {
   const {
     formatCardNumber,
     getCreditCardIcon,
@@ -18,69 +24,75 @@ const TransactionCard = (transactionCardProps: TransactionCardProps) => {
   } = useTablePipes();
 
   const { baseClassName, showMore, setShowMore } =
-    useTransactionCard(transactionCardProps);
+    useTransactionCard(transaction);
 
   return (
     <>
       <article className={baseClassName}>
-        <h4 className={`${Style.label} ${Style.tableBlue}`}>{'Transacción'}</h4>
+        <h4 className={`${Style.label} ${Style.tableBlue}`}>
+          {translations.transaction}
+        </h4>
         <div className={`${Style.content} ${Style.tableBlue}`}>
           <div className={Style.icon}>
             <Image
-              alt='Tipo de cobro'
-              src={getPaymentMethodIcon(transactionCardProps.paymentMethod)}
+              alt={translations.typeOfPayment}
+              src={getPaymentMethodIcon(transaction.paymentMethod)}
               fill={true}
             />
           </div>
-          <span className={Style.status}>{transactionCardProps.status}</span>
+          <span className={Style.status}>
+            {translations[transaction.status]}
+          </span>
         </div>
 
         <h4 className={`${Style.label} ${Style.tableBlue}`}>
-          {'Fecha y hora'}
+          {translations.dateAndHour}
         </h4>
         <div className={`${Style.content} ${Style.tableGray}`}>
-          {formatDate(transactionCardProps.createdAt)}
+          {formatDate(transaction.createdAt)}
         </div>
 
         <div
           className={`${Style.expand} ${showMore ? Style.expandActive : ''}`}
         >
           <h4 className={`${Style.label} ${Style.tableBlue}`}>
-            {'Método de pago'}
+            {translations.paymentMethod}
           </h4>
           <div className={`${Style.content} ${Style.tableGray}`}>
             <div className={Style.iconCard}>
               <Image
-                alt='Número de tarjeta'
-                src={getCreditCardIcon(transactionCardProps.cardNumber)}
+                alt={translations.card}
+                src={getCreditCardIcon(transaction.cardNumber)}
                 fill={true}
               />
             </div>
-            <span>{formatCardNumber(transactionCardProps.cardNumber)}</span>
+            <span>{formatCardNumber(transaction.cardNumber)}</span>
           </div>
 
           <h4 className={`${Style.label} ${Style.tableBlue}`}>
-            {'ID transacción Bold'}
+            {translations.idTransactionBold}
           </h4>
           <div className={`${Style.content} ${Style.tableGray}`}>
-            <span>{transactionCardProps.id}</span>
+            <span>{transaction.id}</span>
           </div>
 
-          <h4 className={`${Style.label} ${Style.tableBlue}`}>{'Monto'}</h4>
+          <h4 className={`${Style.label} ${Style.tableBlue}`}>
+            {translations.amount}
+          </h4>
 
           <div
             className={`${Style.content} ${Style.tableBlue} ${Style.contentCol}`}
           >
-            <div>$ {transactionCardProps.amount.toLocaleString()}</div>
+            <div>$ {transaction.amount.toLocaleString()}</div>
 
-            {transactionCardProps.status === TransactionStatus.SUCCESS ? (
+            {transaction.status === TransactionStatus.SUCCESS ? (
               <>
                 <div className={`${Style.deductionLabel} ${Style.tableGray}`}>
-                  {'Deducción Bold'}
+                  {translations.boldDeduction}
                 </div>
 
                 <div className={`${Style.deductionAmount} ${Style.tableRed}`}>
-                  - $ {transactionCardProps.deduction?.toLocaleString()}
+                  - $ {transaction.deduction?.toLocaleString()}
                 </div>
               </>
             ) : (
@@ -90,11 +102,11 @@ const TransactionCard = (transactionCardProps: TransactionCardProps) => {
         </div>
 
         <button
-          aria-label='Ver'
+          aria-label={translations.see}
           className={Style.btn}
           onClick={() => setShowMore(!showMore)}
         >
-          {!showMore ? 'Ver mas' : 'Ver menos'}
+          {translations[`see${!showMore ? 'More' : 'Less'}`]}
         </button>
       </article>
     </>
