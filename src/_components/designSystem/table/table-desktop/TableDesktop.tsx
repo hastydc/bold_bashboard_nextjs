@@ -93,7 +93,7 @@ const TableDesktop = (tableProps: TableProps) => {
                         <div
                           className={`${Style.deductionLabel} ${Style.tableGray}`}
                         >
-                          {'Deducción Bold'}
+                          {t('table.boldDeduction')}
                         </div>
 
                         <div
