@@ -7,11 +7,11 @@ export const LayoutContext = createContext({
   setShowMenu: (value: any) => value,
 });
 
-type LayoutPropviderProps = {
+type LayoutProviderProps = {
   children: React.ReactNode;
 };
 
-const LayoutProvider = ({ children }: LayoutPropviderProps) => {
+const LayoutProvider = ({ children }: LayoutProviderProps) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const value = {

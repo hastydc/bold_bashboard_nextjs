@@ -1,17 +1,18 @@
 import Style from './priceCard.module.scss';
 import Tooltip from '../tooltip/Tooltip';
 import usePriceCard from './hooks/usePriceCard';
-import { useTranslations } from 'next-intl';
-import { transactionData } from '@/mock/data';
+import { transactionData } from '@/_mock/data';
 
-const PriceCard = () => {
+type PriceCardProps = {
+  translations: { [key: string]: string };
+};
+
+const PriceCard = ({ translations }: PriceCardProps) => {
   const {
     title,
     total: totalSales,
-    monthName,
     dayNumber,
-  } = usePriceCard(transactionData);
-  const t = useTranslations();
+  } = usePriceCard(transactionData, translations);
 
   return (
     <>
@@ -19,14 +20,14 @@ const PriceCard = () => {
         <div className={Style.header}>
           <span className={Style.title}>{title}</span>
 
-          <Tooltip label={t('sales')} icon={'i'} left={true} />
+          <Tooltip label={translations.sales} icon={'i'} left={true} />
         </div>
 
         <div className={Style.content}>
           <div className={Style.value}>{totalSales}</div>
 
           <div className={Style.date}>
-            {t(`dateSelector.${monthName}`)} {dayNumber}
+            {translations.monthName} {dayNumber}
           </div>
         </div>
       </article>

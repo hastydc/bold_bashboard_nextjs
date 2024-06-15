@@ -4,8 +4,8 @@ import Style from '../table.module.scss';
 import useTable, { useTablePipes } from '../hooks/useTable';
 import useTableDesktop from './hooks/useTableDesktop';
 import Image from 'next/image';
-import { TransactionStatus } from '@/models/transactionStatus.enum';
-import { transactionData, transactions } from '@/mock/data';
+import { TransactionStatus } from '@/_models/transactionStatus.enum';
+import { transactionData, transactions } from '@/_mock/data';
 
 type TableProps = {
   translations: { [key: string]: string };

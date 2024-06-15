@@ -2,7 +2,7 @@
 
 import { FaMoon, FaSun } from 'react-icons/fa6';
 import Style from './menuTheme.module.scss';
-import { Theme } from '@/models/theme.enum';
+import { Theme } from '@/_models/theme.enum';
 import useMenuTheme from './hooks/useMenuTheme';
 
 type MenuThemeProps = {

@@ -1,8 +1,8 @@
 import '@/styles/theme.scss';
-import MainThemeProvider from '@/_providers/mainThemeProvider';
+import MainThemeProvider from '@/_providers/mainTheme.provider';
 import { Metadata } from 'next';
 import { montserrat } from '@/styles/fonts';
-import LayoutProvider from '@/_providers/layoutProvider';
+import LayoutProvider from '@/_providers/layout.provider';
 
 export const metadata: Metadata = {
   title: 'Bold Dashboard',

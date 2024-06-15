@@ -1,4 +1,4 @@
-import { PaymentBaseFilter, PaymentMethod } from '@/models/paymentMethod.enum';
+import { PaymentBaseFilter, PaymentMethod } from '@/_models/paymentMethod.enum';
 import { useState } from 'react';
 
 const usePaymentMethodSelector = () => {

@@ -1,15 +1,14 @@
-import { currentDate, getLabels } from '@/mock/data';
-import { TransactionData } from '@/models/transactionData.interface';
+import { currentDate, getLabels } from '@/_mock/data';
+import { TransactionData } from '@/_models/transactionData.interface';
 import { useTranslations } from 'next-intl';
 
-const usePriceCard = ({
-  dateFilter,
-  monthName,
-  totalSales,
-}: TransactionData) => {
-  const t = useTranslations();
-
-  const title = `${t('totalSalesOf')} ${getLabels(monthName)[dateFilter]}`;
+const usePriceCard = (
+  { dateFilter, monthName, totalSales }: TransactionData,
+  translations: { [key: string]: string }
+) => {
+  const title = `${translations.totalSalesOf} ${
+    getLabels(monthName)[dateFilter]
+  }`;
   const dayNumber = new Date(currentDate).getDate();
   const total = `$ ${totalSales.toLocaleString()}`;
 

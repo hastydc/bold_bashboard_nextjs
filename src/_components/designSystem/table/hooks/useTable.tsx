@@ -1,6 +1,6 @@
-import { getLabels } from '@/mock/data';
-import { PaymentMethod } from '@/models/paymentMethod.enum';
-import { TransactionData } from '@/models/transactionData.interface';
+import { getLabels } from '@/_mock/data';
+import { PaymentMethod } from '@/_models/paymentMethod.enum';
+import { TransactionData } from '@/_models/transactionData.interface';
 
 const _visa = new RegExp('^4[0-9]{12}(?:[0-9]{3})?$');
 

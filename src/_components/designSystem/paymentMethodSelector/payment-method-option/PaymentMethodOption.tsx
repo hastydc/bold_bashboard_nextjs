@@ -1,4 +1,4 @@
-import { PaymentMethod } from '@/models/paymentMethod.enum';
+import { PaymentMethod } from '@/_models/paymentMethod.enum';
 import Style from './paymentMethodOption.module.scss';
 
 export type PaymentMethodOptionProps = {

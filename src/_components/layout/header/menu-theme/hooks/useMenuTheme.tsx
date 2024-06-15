@@ -1,4 +1,4 @@
-import { Theme } from '@/models/theme.enum';
+import { Theme } from '@/_models/theme.enum';
 import { useTheme } from 'next-themes';
 
 const useMenuTheme = () => {

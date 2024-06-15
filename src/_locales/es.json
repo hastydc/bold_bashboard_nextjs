@@ -15,11 +15,11 @@
   "light": "Claro",
   "dark": "Oscuro",
   "sales": "Ventas",
-  "totalSalesOf": "Total de ventas de ",
   "dateSelector": {
     "June": "Junio",
     "Today": "Hoy",
-    "Week": "Esta semana"
+    "Week": "Esta semana",
+    "totalSalesOf": "Total de ventas de "
   },
   "paymentMethodKeys": {
     "filter": "Filtrar",

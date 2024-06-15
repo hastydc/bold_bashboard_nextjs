@@ -1,8 +1,8 @@
-import { PaymentMethod } from '@/models/paymentMethod.enum';
-import { Transaction } from '@/models/transaction.interface';
-import { TransactionData } from '@/models/transactionData.interface';
-import { TransactionDate } from '@/models/transactionDate.enum';
-import { TransactionStatus } from '@/models/transactionStatus.enum';
+import { PaymentMethod } from '@/_models/paymentMethod.enum';
+import { Transaction } from '@/_models/transaction.interface';
+import { TransactionData } from '@/_models/transactionData.interface';
+import { TransactionDate } from '@/_models/transactionDate.enum';
+import { TransactionStatus } from '@/_models/transactionStatus.enum';
 
 const delay = async () => new Promise((resolve) => setTimeout(resolve, 0));
 

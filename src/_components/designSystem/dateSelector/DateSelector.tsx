@@ -2,7 +2,7 @@
 
 import Style from './dateSelector.module.scss';
 import useDateSelector from './hooks/useDateSelector';
-import { transactionData } from '@/mock/data';
+import { transactionData } from '@/_mock/data';
 
 type DateSelectorProps = {
   translations: { [key: string]: string };

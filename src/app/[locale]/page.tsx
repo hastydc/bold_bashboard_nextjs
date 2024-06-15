@@ -1,10 +1,10 @@
 import Header from '@/_components/layout/header/Header';
 import Content from '@/_components/layout/content/Content';
-import Dashboard from '@/_components/dashboard/Dashboard';
 import { Suspense } from 'react';
 import DashboardSkeleton from '@/_components/skeletons/dashboard-skeleton/DashboardSkeleton';
+import DashboardWrapper from '@/_components/dashboard-wrapper/DashboardWrapper';
 
-const Home = () => {
+const Home = async () => {
   return (
     <>
       <main>
@@ -12,7 +12,7 @@ const Home = () => {
 
         <Content>
           <Suspense fallback={<DashboardSkeleton />}>
-            <Dashboard />
+            <DashboardWrapper />
           </Suspense>
         </Content>
       </main>

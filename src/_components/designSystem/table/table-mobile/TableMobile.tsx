@@ -3,7 +3,7 @@
 import Style from '../table.module.scss';
 import useTable from '../hooks/useTable';
 import TransactionCard from './transaction-card/TransactionCard';
-import { transactionData } from '@/mock/data';
+import { transactionData } from '@/_mock/data';
 
 type TableProps = {
   translations: { [key: string]: string };

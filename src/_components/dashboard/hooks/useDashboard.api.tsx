@@ -1,4 +1,4 @@
-import { TransactionData } from '@/models/transactionData.interface';
+import { TransactionData } from '@/_models/transactionData.interface';
 
 const useDashboardApi = () => {
   const getData = async (): Promise<TransactionData> => {
