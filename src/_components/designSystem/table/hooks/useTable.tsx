@@ -14,7 +14,6 @@ const useTable = (
   { dateFilter, monthName, transactions }: TableData,
   translations: { [key: string]: string }
 ) => {
-  console.log(translations, dateFilter, monthName);
   const title = `${translations.yourSalesOf} ${translations[dateFilter]}`;
 
   return { title, transactions };

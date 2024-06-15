@@ -5,7 +5,6 @@ const usePriceCard = (
   { dateFilter, monthName, totalSales }: TableData,
   translations: { [key: string]: string }
 ) => {
-  console.log(translations, dateFilter);
   const title = `${translations.totalSalesOf} ${translations[dateFilter]}`;
   const dayNumber = new Date(currentDate).getDate();
   const total = `$ ${totalSales.toLocaleString()}`;
