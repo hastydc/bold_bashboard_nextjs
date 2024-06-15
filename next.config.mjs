@@ -12,9 +12,6 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')],
     prependData: '@import "./src/styles/index.scss"; \n',
   },
-  env: {
-    API_DELAY: process.env.API_DELAY,
-  },
 };
 
 export default withNextIntl(nextConfig);

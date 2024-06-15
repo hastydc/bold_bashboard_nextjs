@@ -1,0 +1,94 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  width: 100%;
+
+  @include media(tablet) {
+    flex-direction: row;
+  }
+}
+
+.card {
+  border-radius: rem(16);
+  overflow: hidden;
+  width: 100%;
+  max-width: rem(450);
+}
+
+.actions {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: rem(32);
+}
+
+.date {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba($colorGrayDark, 0.25);
+  margin-top: rem(32);
+
+  @include media(tablet) {
+    flex-direction: row;
+    margin-top: 0;
+  }
+}
+
+.dateBox {
+  height: 100%;
+  height: rem(58);
+  width: 100%;
+}
+
+.filter {
+  width: 100%;
+  height: rem(42);
+  background-color: rgba($colorGrayDark, 0.25);
+
+  @include media(tablet) {
+    width: rem(300);
+  }
+}
+
+.title,
+.content,
+.dateBox,
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  width: 100%;
+  height: rem(50);
+  box-sizing: border-box;
+  background-color: rgba($colorGrayDark, 0.5);
+}
+
+.content {
+  width: 100%;
+  height: rem(93);
+  background-color: rgba($colorGrayDark, 0.25);
+
+  @include media(tablet) {
+    height: rem(112);
+  }
+}
+
+.table {
+  border-radius: rem(16);
+  overflow: hidden;
+  margin-top: rem(32);
+  width: 100%;
+
+  @include media(tablet) {
+    margin-top: rem(16);
+  }
+}

@@ -4,6 +4,8 @@ import { TransactionData } from '@/models/transactionData.interface';
 import { TransactionDate } from '@/models/transactionDate.enum';
 import { TransactionStatus } from '@/models/transactionStatus.enum';
 
+const delay = async () => new Promise((resolve) => setTimeout(resolve, 3000));
+
 export const getLabels = (monthName: string = '') => ({
   [TransactionDate.MONTH]: monthName,
   [TransactionDate.TODAY]: 'hoy',
@@ -184,4 +186,4 @@ const transactionData: TransactionData = {
   monthName: 'June',
 };
 
-export { transactions, currentDate, tableHeaders, transactionData };
+export { transactions, currentDate, tableHeaders, transactionData, delay };
