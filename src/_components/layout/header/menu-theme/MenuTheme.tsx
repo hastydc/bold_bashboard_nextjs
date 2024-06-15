@@ -13,7 +13,7 @@ const MenuTheme = () => {
       <button className={Style.menuTheme} aria-label='Cambiar tema'>
         <FaSun
           className={`${Style.iconLight} ${
-            theme === Theme.LIGHT ? Style.active : ''
+            theme === Theme.DARK ? Style.active : ''
           }`}
           onClick={() => updateTheme()}
           onKeyUp={() => updateTheme()}
@@ -21,7 +21,7 @@ const MenuTheme = () => {
 
         <FaMoon
           className={`${Style.iconDark}  ${
-            theme === Theme.DARK ? Style.active : ''
+            theme === Theme.LIGHT ? Style.active : ''
           }`}
           onClick={() => updateTheme()}
           onKeyUp={() => updateTheme()}

@@ -1,0 +1,43 @@
+.dateSelector {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: var(--color-gray-light);
+  box-shadow: $boxShadow;
+  box-sizing: border-box;
+  padding: rem(8) rem(16);
+  gap: rem(16);
+  margin-top: rem(32);
+
+  @include media(tablet) {
+    flex-direction: row;
+    margin-top: rem(0);
+  }
+}
+
+.btn {
+  display: flex;
+  width: 100%;
+  color: var(--color-main-contrast);
+  border: 0;
+  font-size: rem(20);
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: rem(32);
+  box-sizing: border-box;
+  padding: rem(8);
+  transition: 0.5s ease-in-out;
+  text-transform: capitalize;
+  background-color: var(--color-bg);
+  border: rem(1) solid var(--color-text-gray);
+
+  &:hover {
+    background: var(--color-hover);
+  }
+}
+
+.active {
+  background: var(--color-hover);
+}
