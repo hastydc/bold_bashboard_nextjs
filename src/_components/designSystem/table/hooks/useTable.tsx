@@ -1,6 +1,7 @@
-import { getLabels } from '@/mock/data';
-import { PaymentMethod } from '@/models/paymentMethod.enum';
-import { TransactionData } from '@/models/transactionData.interface';
+import { DateFilter } from '@/_models/dateFilter.enum';
+import { PaymentMethod } from '@/_models/paymentMethod.enum';
+import { TableDataContext } from '@/_providers/tableData.provider';
+import { useContext } from 'react';
 
 const _visa = new RegExp('^4[0-9]{12}(?:[0-9]{3})?$');
 
@@ -11,15 +12,17 @@ const _fileName: { [key: string]: string } = {
   [PaymentMethod.LINK]: 'icon-chain',
 };
 
-const useTable = (
-  { dateFilter, monthName, transactions }: TransactionData,
-  translations: { [key: string]: string }
-) => {
-  const title = `${translations.yourSalesOf} ${
-    getLabels(monthName)[dateFilter]
+const useTable = (translations: { [key: string]: string }) => {
+  const tableData = useContext(TableDataContext);
+  const month =
+    tableData.dateFilter === DateFilter.MONTH
+      ? translations[tableData.monthName!]
+      : '';
+  const title = `${translations.yourSalesOf} ${month} ${
+    translations[tableData.dateFilter] ?? ''
   }`;
 
-  return { title, transactions };
+  return { title, tableData };
 };
 
 export const useTablePipes = () => {

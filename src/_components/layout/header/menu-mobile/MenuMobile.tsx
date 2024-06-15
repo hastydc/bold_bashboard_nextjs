@@ -2,8 +2,8 @@
 
 import { useContext } from 'react';
 import Style from './menuMobile.module.scss';
-import { LayoutContext } from '@/_providers/layoutProvider';
-import { MenuItem } from '@/models/menuItem.interface';
+import { LayoutContext } from '@/_providers/layout.provider';
+import { MenuItem } from '@/_models/menuItem.interface';
 import Link from 'next/link';
 
 type MenuMobileProps = {

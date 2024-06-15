@@ -1,11 +1,11 @@
 import { PaymentMethod } from './paymentMethod.enum';
 import { Transaction } from './transaction.interface';
-import { TransactionDate } from './transactionDate.enum';
+import { DateFilter } from './dateFilter.enum';
 
-export interface TransactionData {
+export interface TableData {
   transactions: Transaction[];
   totalSales: number;
-  dateFilter: TransactionDate;
+  dateFilter: DateFilter;
   paymentMethods?: PaymentMethod[];
   monthName?: string;
 }

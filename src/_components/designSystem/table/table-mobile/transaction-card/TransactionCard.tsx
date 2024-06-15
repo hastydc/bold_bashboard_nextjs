@@ -1,9 +1,9 @@
 'use client';
 
-import { Transaction } from '@/models/transaction.interface';
+import { Transaction } from '@/_models/transaction.interface';
 import Style from '../../table.module.scss';
 import useTransactionCard from './hooks/useTransactionCard';
-import { TransactionStatus } from '@/models/transactionStatus.enum';
+import { TransactionStatus } from '@/_models/transactionStatus.enum';
 import { useTablePipes } from '../../hooks/useTable';
 import Image from 'next/image';
 

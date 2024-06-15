@@ -1,58 +1,61 @@
+'use client';
+
 import PriceCard from '../designSystem/priceCard/PriceCard';
 import Style from './dashboard.module.scss';
 import DateSelector from '../designSystem/dateSelector/DateSelector';
 import PaymentMethodSelector from '../designSystem/paymentMethodSelector/PaymentMethodSelector';
 import TableMobile from '../designSystem/table/table-mobile/TableMobile';
 import TableDesktop from '../designSystem/table/table-desktop/TableDesktop';
-import { getTranslations } from 'next-intl/server';
-import { Suspense } from 'react';
-import { delay } from '@/mock/data';
-import useDashboardApi from './api/useDashboard.api';
-import { TransactionData } from '@/models/transactionData.interface';
+import TableDataProvider from '@/_providers/tableData.provider';
+import { Transaction } from '@/_models/transaction.interface';
+import useDashboard from './hooks/useDashboard';
 
-const Dashboard = async () => {
-  const t = await getTranslations();
+type DashboardProps = {
+  translationsDate: { [key: string]: string };
+  translationsPayment: { [key: string]: string };
+  translationsTable: { [key: string]: string };
+  transactions: Transaction[];
+};
 
-  const { getData } = useDashboardApi();
-  const transactionData: TransactionData = await getData();
-
-  await delay();
+const Dashboard = ({
+  translationsDate,
+  translationsPayment,
+  translationsTable,
+  transactions,
+}: DashboardProps) => {
+  useDashboard(transactions);
 
   return (
     <>
-      <div className={Style.dashboard}>
-        <section className={Style.header}>
-          <div className={Style.card}>
-            <Suspense fallback={<>Loading...</>}>
-              <PriceCard />
-            </Suspense>
-          </div>
-
-          <div className={Style.actions}>
-            <div className={Style.dateSelector}>
-              <DateSelector translations={t.raw('dateSelector')} />
+      <TableDataProvider>
+        <div className={Style.dashboard}>
+          <section className={Style.header}>
+            <div className={Style.card}>
+              <PriceCard translations={translationsDate} />
             </div>
 
-            <div className={Style.paymentSelector}>
-              <PaymentMethodSelector
-                translations={t.raw('paymentMethodKeys')}
-              />
+            <div className={Style.actions}>
+              <div className={Style.dateSelector}>
+                <DateSelector translations={translationsDate} />
+              </div>
+
+              <div className={Style.paymentSelector}>
+                <PaymentMethodSelector translations={translationsPayment} />
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className={Style.table}>
-          <div className={Style.tableMobile}>
-            <TableMobile translations={t.raw('table')} />
-          </div>
+          <section className={Style.table}>
+            <div className={Style.tableMobile}>
+              <TableMobile translations={translationsTable} />
+            </div>
 
-          <div className={Style.tableDesktop}>
-            <Suspense>
-              <TableDesktop translations={t.raw('table')} />
-            </Suspense>
-          </div>
-        </section>
-      </div>
+            <div className={Style.tableDesktop}>
+              <TableDesktop translations={translationsTable} />
+            </div>
+          </section>
+        </div>
+      </TableDataProvider>
     </>
   );
 };

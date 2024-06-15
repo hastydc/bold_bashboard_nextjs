@@ -10,16 +10,16 @@
   "seeAll": "Ver todos",
   "apply": "Aplicar",
   "transactionsNotFound": "No se encontraron transacciones",
-  "totalSales": "Ventas totales",
   "switchTheme": "Cambiar tema",
   "light": "Claro",
   "dark": "Oscuro",
   "sales": "Ventas",
-  "totalSalesOf": "Total de ventas de ",
   "dateSelector": {
     "June": "Junio",
     "Today": "Hoy",
-    "Week": "Esta semana"
+    "Week": "Esta semana",
+    "totalSalesOf": "Total de ventas de ",
+    "sales": "Ventas"
   },
   "paymentMethodKeys": {
     "filter": "Filtrar",
@@ -42,6 +42,10 @@
     "see": "Ver",
     "seeMore": "Ver más",
     "seeLess": "Ver menos",
-    "yourSalesOf": "Tus ventas de"
+    "yourSalesOf": "Tus ventas de",
+
+    "June": "Junio",
+    "Today": "Hoy",
+    "Week": "Esta semana"
   }
 }

@@ -1,4 +1,4 @@
-import { LayoutContext } from '@/_providers/layoutProvider';
+import { LayoutContext } from '@/_providers/layout.provider';
 import { useContext } from 'react';
 
 const useMenuIcon = () => {

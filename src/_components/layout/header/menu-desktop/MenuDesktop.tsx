@@ -1,4 +1,4 @@
-import { MenuItem } from '@/models/menuItem.interface';
+import { MenuItem } from '@/_models/menuItem.interface';
 import Style from './menuDesktop.module.scss';
 import Link from 'next/link';
 import Tooltip from '@/_components/designSystem/tooltip/Tooltip';

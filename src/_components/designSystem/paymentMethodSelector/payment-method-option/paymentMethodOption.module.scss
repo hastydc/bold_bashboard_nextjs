@@ -23,3 +23,21 @@
     opacity: 1;
   }
 }
+
+.btn {
+  background-color: transparent;
+  border: 0;
+  font-size: rem(20);
+  cursor: pointer;
+  color: var(--color-main-contrast);
+  font-weight: 600;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: rem(8);
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  padding: 0;
+}

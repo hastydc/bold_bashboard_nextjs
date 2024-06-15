@@ -1,17 +1,14 @@
 import Style from './priceCard.module.scss';
 import Tooltip from '../tooltip/Tooltip';
 import usePriceCard from './hooks/usePriceCard';
-import { useTranslations } from 'next-intl';
-import { transactionData } from '@/mock/data';
+import { DateFilter } from '@/_models/dateFilter.enum';
 
-const PriceCard = () => {
-  const {
-    title,
-    total: totalSales,
-    monthName,
-    dayNumber,
-  } = usePriceCard(transactionData);
-  const t = useTranslations();
+type PriceCardProps = {
+  translations: { [key: string]: string };
+};
+
+const PriceCard = ({ translations }: PriceCardProps) => {
+  const { title, dayNumber, tableData } = usePriceCard(translations);
 
   return (
     <>
@@ -19,15 +16,21 @@ const PriceCard = () => {
         <div className={Style.header}>
           <span className={Style.title}>{title}</span>
 
-          <Tooltip label={t('sales')} icon={'i'} left={true} />
+          <Tooltip label={translations.sales} icon={'i'} left={true} />
         </div>
 
         <div className={Style.content}>
-          <div className={Style.value}>{totalSales}</div>
-
-          <div className={Style.date}>
-            {t(`dateSelector.${monthName}`)} {dayNumber}
+          <div className={Style.value}>
+            $ {tableData.totalSales.toLocaleString()}
           </div>
+
+          {tableData.dateFilter === DateFilter.TODAY ? (
+            <div className={Style.date}>
+              {translations[tableData.monthName!]} {dayNumber}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </article>
     </>

@@ -3,14 +3,14 @@
 import Style from '../table.module.scss';
 import useTable from '../hooks/useTable';
 import TransactionCard from './transaction-card/TransactionCard';
-import { transactionData } from '@/mock/data';
+import { transactionData } from '@/_mock/data';
 
 type TableProps = {
   translations: { [key: string]: string };
 };
 
 const TableMobile = ({ translations }: TableProps) => {
-  const { title, transactions } = useTable(transactionData, translations);
+  const { title, tableData } = useTable(translations);
 
   return (
     <>
@@ -18,7 +18,7 @@ const TableMobile = ({ translations }: TableProps) => {
         <div className={Style.mobile}>
           <div className={`${Style.th} ${Style.thHead}`}>{title}</div>
 
-          {transactions.map((transaction) => (
+          {tableData.transactions.map((transaction) => (
             <TransactionCard
               translations={translations}
               transaction={transaction}

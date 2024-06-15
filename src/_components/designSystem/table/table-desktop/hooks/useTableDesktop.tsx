@@ -1,4 +1,4 @@
-import { TransactionStatus } from '@/models/transactionStatus.enum';
+import { TransactionStatus } from '@/_models/transactionStatus.enum';
 import Style from '../../table.module.scss';
 
 const tableHeaders: string[] = [
