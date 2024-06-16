@@ -9,6 +9,7 @@ import TableDesktop from '../designSystem/table/table-desktop/TableDesktop';
 import TableDataProvider from '@/_providers/tableData.provider';
 import { Transaction } from '@/_models/transaction.interface';
 import useDashboard from './hooks/useDashboard';
+import DashboardSkeleton from '../skeletons/dashboard-skeleton/DashboardSkeleton';
 
 type DashboardProps = {
   translationsDate: { [key: string]: string };
@@ -23,11 +24,13 @@ const Dashboard = ({
   translationsTable,
   transactions,
 }: DashboardProps) => {
-  useDashboard(transactions);
+  const { tableData, mounted } = useDashboard(transactions);
+
+  if (!mounted || !Object.keys(tableData).length) return <DashboardSkeleton />;
 
   return (
     <>
-      <TableDataProvider>
+      <TableDataProvider initialState={tableData}>
         <div className={Style.dashboard}>
           <section className={Style.header}>
             <div className={Style.card}>
@@ -36,11 +39,17 @@ const Dashboard = ({
 
             <div className={Style.actions}>
               <div className={Style.dateSelector}>
-                <DateSelector translations={translationsDate} />
+                <DateSelector
+                  translations={translationsDate}
+                  transactions={transactions}
+                />
               </div>
 
               <div className={Style.paymentSelector}>
-                <PaymentMethodSelector translations={translationsPayment} />
+                <PaymentMethodSelector
+                  translations={translationsPayment}
+                  transactions={transactions}
+                />
               </div>
             </div>
           </section>

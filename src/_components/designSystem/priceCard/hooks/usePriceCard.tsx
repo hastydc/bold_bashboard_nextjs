@@ -13,7 +13,6 @@ const usePriceCard = (translations: { [key: string]: string }) => {
     translations[tableData.dateFilter] ?? ''
   }`;
   const dayNumber = new Date(currentDate).getDate();
-  const total = `$ ${tableData.totalSales.toLocaleString()}`;
 
   return { title, tableData, dayNumber };
 };

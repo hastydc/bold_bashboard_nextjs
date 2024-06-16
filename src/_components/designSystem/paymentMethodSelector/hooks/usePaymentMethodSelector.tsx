@@ -1,17 +1,24 @@
 import { PaymentMethod } from '@/_models/paymentMethod.enum';
 import { TableAction } from '@/_models/tableAction.enum';
-import { TableDataDispatchContext } from '@/_providers/tableData.provider';
+import { Transaction } from '@/_models/transaction.interface';
+import { LayoutContext } from '@/_providers/layout.provider';
+import {
+  TableDataContext,
+  TableDataDispatchContext,
+} from '@/_providers/tableData.provider';
 import { useContext, useEffect, useState } from 'react';
 
 export type Selecteds = { [key: string]: boolean };
 
-const usePaymentMethodSelector = () => {
+const usePaymentMethodSelector = (transactions: Transaction[]) => {
   const [showList, setShowList] = useState(false);
   const [selecteds, setSelecteds] = useState<Selecteds>({});
   const [disabled, setDisabled] = useState(false);
-  const tableDataDispatch = useContext(TableDataDispatchContext);
+  const [mounted, setMounted] = useState(false);
+  const tableDataState = useContext(TableDataContext);
   const options = [PaymentMethod.DATAPHONE, PaymentMethod.LINK];
   const optionAll = PaymentMethod.ALL;
+  const tableDataDispatch = useContext(TableDataDispatchContext);
 
   const toggleList = () => {
     setShowList(!showList);
@@ -21,6 +28,7 @@ const usePaymentMethodSelector = () => {
     tableDataDispatch({
       action: TableAction.CHANGE_PAYMENT_TYPE,
       payload: {
+        transactions,
         paymentMethods: Object.keys(selecteds)
           .filter((key: string) => selecteds[key] && key !== PaymentMethod.ALL)
           .map((key: string) => key as PaymentMethod),
@@ -65,6 +73,16 @@ const usePaymentMethodSelector = () => {
   useEffect(() => {
     updateDisabled();
   }, [selecteds]);
+
+  useEffect(() => {
+    if (mounted) return;
+
+    tableDataState.paymentMethods?.forEach((option: string) => {
+      updateSelecteds(option);
+    });
+
+    setMounted(true);
+  }, [tableDataState]);
 
   return {
     showList,

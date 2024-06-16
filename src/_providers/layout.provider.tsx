@@ -5,9 +5,6 @@ import { createContext, useState } from 'react';
 export const LayoutContext = createContext({
   showMenu: false,
   setShowMenu: (value: any) => value,
-
-  transactions: [],
-  setTransactions: (value: any) => value,
 });
 
 type LayoutProviderProps = {
@@ -16,13 +13,10 @@ type LayoutProviderProps = {
 
 const LayoutProvider = ({ children }: LayoutProviderProps) => {
   const [showMenu, setShowMenu] = useState(false);
-  const [transactions, setTransactions] = useState([]);
 
   const value = {
     showMenu,
     setShowMenu,
-    transactions,
-    setTransactions,
   };
 
   return (

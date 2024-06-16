@@ -1,5 +1,6 @@
 'use client';
 
+import { Transaction } from '@/_models/transaction.interface';
 import usePaymentMethodSelector from './hooks/usePaymentMethodSelector';
 import PaymentMethodOption from './payment-method-option/PaymentMethodOption';
 import Style from './paymentMethodSelector.module.scss';
@@ -7,9 +8,13 @@ import { FaSliders, FaX } from 'react-icons/fa6';
 
 type PaymentMethodProps = {
   translations: { [key: string]: string };
+  transactions: Transaction[];
 };
 
-const PaymentMethodSelector = ({ translations }: PaymentMethodProps) => {
+const PaymentMethodSelector = ({
+  translations,
+  transactions,
+}: PaymentMethodProps) => {
   const {
     showList,
     options,
@@ -19,7 +24,7 @@ const PaymentMethodSelector = ({ translations }: PaymentMethodProps) => {
     updateSelecteds,
     toggleList,
     filter,
-  } = usePaymentMethodSelector();
+  } = usePaymentMethodSelector(transactions);
 
   return (
     <>

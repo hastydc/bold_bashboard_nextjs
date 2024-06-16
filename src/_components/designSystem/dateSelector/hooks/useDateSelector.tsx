@@ -1,4 +1,3 @@
-import { TableData } from '@/_models/tableData.interface';
 import { TableAction } from '@/_models/tableAction.enum';
 import { DateFilter } from '@/_models/dateFilter.enum';
 import {
@@ -7,11 +6,14 @@ import {
 } from '@/_providers/tableData.provider';
 
 import { useContext, useEffect, useState } from 'react';
+import { Transaction } from '@/_models/transaction.interface';
 
 const useDateSelector = (
-  { monthName = '', dateFilter: baseDateFilter }: TableData,
-  translations: { [key: string]: string }
+  translations: { [key: string]: string },
+  transactions: Transaction[]
 ) => {
+  const tableData = useContext(TableDataContext);
+
   const options = [
     {
       label: translations[DateFilter.TODAY],
@@ -22,25 +24,25 @@ const useDateSelector = (
       value: DateFilter.WEEK,
     },
     {
-      label: translations[monthName],
+      label: translations[tableData.monthName ?? ''],
       value: DateFilter.MONTH,
     },
   ];
 
-  const [dateFilter, setDateFilter] = useState(baseDateFilter);
-  const state = useContext(TableDataContext);
+  const [dateFilter, setDateFilter] = useState(tableData.dateFilter);
+  const tableDataState = useContext(TableDataContext);
   const tableDataDispatch = useContext(TableDataDispatchContext);
 
   const filterByDate = (dateFilter: DateFilter) => {
     tableDataDispatch({
       action: TableAction.CHANGE_DATE,
-      payload: { dateFilter },
+      payload: { dateFilter, transactions },
     });
   };
 
   useEffect(() => {
-    setDateFilter(state.dateFilter);
-  }, [state]);
+    setDateFilter(tableDataState.dateFilter);
+  }, [tableDataState]);
 
   return { options, dateFilter, filterByDate };
 };

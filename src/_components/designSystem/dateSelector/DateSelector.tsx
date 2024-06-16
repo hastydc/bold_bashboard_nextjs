@@ -1,17 +1,18 @@
 'use client';
 
+import { Transaction } from '@/_models/transaction.interface';
 import Style from './dateSelector.module.scss';
 import useDateSelector from './hooks/useDateSelector';
-import { transactionData } from '@/_mock/data';
 
 type DateSelectorProps = {
   translations: { [key: string]: string };
+  transactions: Transaction[];
 };
 
-const DateSelector = ({ translations }: DateSelectorProps) => {
+const DateSelector = ({ translations, transactions }: DateSelectorProps) => {
   const { options, dateFilter, filterByDate } = useDateSelector(
-    transactionData,
-    translations
+    translations,
+    transactions
   );
 
   return (
