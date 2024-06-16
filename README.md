@@ -18,6 +18,14 @@ In the project directory, you can run:
 
 Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
 
+### `env`
+
+Now you need to setup api url env var like this, in root create a file named .env.local and put
+
+```js
+API_URL = 'your api base url like (http://localhost:3000/api)';
+```
+
 ### `npm run build`
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
@@ -36,4 +44,4 @@ Run `npm run prettier` to format files in src folder.
 
 ## Live demo
 
-Live demo here -> -> -> [https://bold-dashboard-nextjs.vercel.app/]
+Live demo here -> -> -> [https://bold-dashboard-nextjs.vercel.app/es]
