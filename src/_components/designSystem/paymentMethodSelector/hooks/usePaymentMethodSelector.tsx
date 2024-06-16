@@ -1,7 +1,6 @@
 import { PaymentMethod } from '@/_models/paymentMethod.enum';
 import { TableAction } from '@/_models/tableAction.enum';
 import { Transaction } from '@/_models/transaction.interface';
-import { LayoutContext } from '@/_providers/layout.provider';
 import {
   TableDataContext,
   TableDataDispatchContext,
@@ -67,7 +66,23 @@ const usePaymentMethodSelector = (transactions: Transaction[]) => {
         response[PaymentMethod.DATAPHONE] && response[PaymentMethod.LINK];
     }
 
+    console.log(response);
     setSelecteds(response);
+  };
+
+  const restoreTableData = () => {
+    let response = {};
+
+    if (tableDataState.paymentMethods?.length === options.length) {
+      response = { [optionAll]: true };
+    }
+
+    tableDataState.paymentMethods?.forEach((option: string) => {
+      response = { ...response, [option]: true };
+      setSelecteds(response);
+    });
+
+    setMounted(true);
   };
 
   useEffect(() => {
@@ -77,11 +92,7 @@ const usePaymentMethodSelector = (transactions: Transaction[]) => {
   useEffect(() => {
     if (mounted) return;
 
-    tableDataState.paymentMethods?.forEach((option: string) => {
-      updateSelecteds(option);
-    });
-
-    setMounted(true);
+    restoreTableData();
   }, [tableDataState]);
 
   return {
