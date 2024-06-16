@@ -10,7 +10,7 @@ type MenuThemeProps = {
 };
 
 const MenuTheme = ({ btnLabel }: MenuThemeProps) => {
-  const { theme, updateTheme } = useMenuTheme();
+  const { resolvedTheme, updateTheme } = useMenuTheme();
 
   return (
     <>
@@ -24,13 +24,13 @@ const MenuTheme = ({ btnLabel }: MenuThemeProps) => {
       >
         <FaSun
           className={`${Style.iconLight} ${
-            theme === Theme.DARK ? Style.active : ''
+            resolvedTheme === Theme.DARK ? Style.active : ''
           }`}
         />
 
         <FaMoon
           className={`${Style.iconDark}  ${
-            theme === Theme.LIGHT ? Style.active : ''
+            !resolvedTheme || resolvedTheme === Theme.LIGHT ? Style.active : ''
           }`}
         />
       </button>

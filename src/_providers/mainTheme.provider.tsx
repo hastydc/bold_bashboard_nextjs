@@ -11,7 +11,11 @@ const MainThemeProvider = ({ children }: ThemeProviderProps) => {
 
   if (!ready) return <>{children}</>;
 
-  return <ThemeProvider>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider defaultTheme={'system'} enableSystem={true}>
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default MainThemeProvider;
