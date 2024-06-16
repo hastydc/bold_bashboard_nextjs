@@ -4,7 +4,7 @@ import { Transaction } from '@/models/transaction.interface';
 import { DateFilter } from '@/models/dateFilter.enum';
 import { TransactionStatus } from '@/models/transactionStatus.enum';
 
-const delay = async () => new Promise((resolve) => setTimeout(resolve, 0));
+const delay = async () => new Promise((resolve) => setTimeout(resolve, 2000));
 
 const currentDate: number = 1718287180315;
 
