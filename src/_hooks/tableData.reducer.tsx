@@ -3,6 +3,9 @@ import { TableAction } from '@/_models/tableAction.enum';
 import { Transaction } from '@/_models/transaction.interface';
 import { currentDate, transactionData } from '@/_mock/data';
 import { DateFilter } from '@/_models/dateFilter.enum';
+import { TableKey } from '@/_models/tableKey.enum';
+import { useContext, useEffect } from 'react';
+import { LayoutContext } from '@/_providers/layout.provider';
 
 export type TableDataReducerProps = {
   action: TableAction;
@@ -15,6 +18,8 @@ const _filter = (sourceTableData: TableData): TableData => {
   response.transactions = _getByDate(response);
   response.transactions = _getByPaymentMethod(response);
   response.totalSales = _getTotalSales(response);
+
+  _setPersistence(response);
 
   return response;
 };
@@ -93,23 +98,42 @@ const _getTotalSales = (tableData: TableData): number => {
   return response;
 };
 
+const _setPersistence = ({
+  dateFilter,
+  monthName,
+  paymentMethods,
+}: TableData) => {
+  localStorage.setItem(TableKey.DATE, dateFilter);
+  localStorage.setItem(TableKey.MONTH, `${monthName}`);
+  localStorage.setItem(
+    TableKey.PAYMENT_METHODS,
+    JSON.stringify(paymentMethods)
+  );
+};
+
 const tableDataReducer = (
   state: TableData,
-  { action, payload: { dateFilter, paymentMethods } }: TableDataReducerProps
+  {
+    action,
+    payload: { dateFilter, paymentMethods, transactions = [] },
+  }: TableDataReducerProps
 ) => {
-  let response = state;
-  // TODO: get  transactions from layout context
-  response.transactions = transactionData.transactions;
+  let response = { ...state, transactions };
 
-  if (action === TableAction.CHANGE_DATE) {
-    response = { ...state, dateFilter: dateFilter! };
+  if ([TableAction.CHANGE_DATE, TableAction.RESTORE_FILTERS].includes(action)) {
+    response = { ...response, dateFilter: dateFilter! };
   }
 
-  if (action === TableAction.CHANGE_PAYMENT_TYPE) {
-    response = { ...state, paymentMethods: paymentMethods };
+  if (
+    [TableAction.CHANGE_PAYMENT_TYPE, TableAction.RESTORE_FILTERS].includes(
+      action
+    )
+  ) {
+    response = { ...response, paymentMethods: paymentMethods };
   }
 
   response = _filter(response);
+
   return response;
 };
 

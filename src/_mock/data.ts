@@ -174,7 +174,7 @@ const transactions: Transaction[] = [
 
 const transactionData: TableData = {
   transactions: transactions,
-  totalSales: 325485,
+  totalSales: 1,
   dateFilter: DateFilter.TODAY,
   paymentMethods: [PaymentMethod.DATAPHONE, PaymentMethod.LINK],
   monthName: 'June',
