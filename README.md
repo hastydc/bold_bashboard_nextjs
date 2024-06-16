@@ -44,4 +44,4 @@ Run `npm run prettier` to format files in src folder.
 
 ## Live demo
 
-Live demo here -> -> -> [https://bold-dashboard-nextjs.vercel.app/]
+Live demo here -> -> -> [https://bold-dashboard-nextjs.vercel.app/es]
