@@ -21,7 +21,7 @@ const PriceCard = ({ translations }: PriceCardProps) => {
 
         <div className={Style.content}>
           <div className={Style.value}>
-            $ {tableData.totalSales.toLocaleString()}
+            ${tableData.totalSales.toLocaleString()}
           </div>
 
           {tableData.dateFilter === DateFilter.TODAY ? (

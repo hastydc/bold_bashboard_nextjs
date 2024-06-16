@@ -89,7 +89,7 @@ const TableDesktop = ({ translations }: TableProps) => {
 
                 <td className={Style.td}>
                   <div className={`${Style.content} ${Style.tdAmount}`}>
-                    <div>$ {transaction.amount.toLocaleString()}</div>
+                    <div>${transaction.amount.toLocaleString()}</div>
 
                     {transaction.status === TransactionStatus.SUCCESS ? (
                       <>
@@ -102,7 +102,7 @@ const TableDesktop = ({ translations }: TableProps) => {
                         <div
                           className={`${Style.deductionAmount} ${Style.tableRed}`}
                         >
-                          - $ {transaction.deduction?.toLocaleString()}
+                          - ${transaction.deduction?.toLocaleString()}
                         </div>
                       </>
                     ) : (

@@ -49,7 +49,9 @@ const TransactionCard = ({
           {translations.dateAndHour}
         </h4>
         <div className={`${Style.content} ${Style.tableGray}`}>
-          {formatDate(transaction.createdAt)}
+          <span className={Style.tableGray}>
+            {formatDate(transaction.createdAt)}
+          </span>
         </div>
 
         <div
@@ -58,7 +60,7 @@ const TransactionCard = ({
           <h4 className={`${Style.label} ${Style.tableBlue}`}>
             {translations.paymentMethod}
           </h4>
-          <div className={`${Style.content} ${Style.tableGray}`}>
+          <div className={`${Style.content}`}>
             <div className={Style.iconCard}>
               <Image
                 alt={translations.card}
@@ -66,14 +68,16 @@ const TransactionCard = ({
                 fill={true}
               />
             </div>
-            <span>{formatCardNumber(transaction.cardNumber)}</span>
+            <span className={Style.tableGray}>
+              {formatCardNumber(transaction.cardNumber)}
+            </span>
           </div>
 
           <h4 className={`${Style.label} ${Style.tableBlue}`}>
             {translations.idTransactionBold}
           </h4>
-          <div className={`${Style.content} ${Style.tableGray}`}>
-            <span>{transaction.id}</span>
+          <div className={`${Style.tableGray} ${Style.content}`}>
+            <span className={Style.tableGray}>{transaction.id}</span>
           </div>
 
           <h4 className={`${Style.label} ${Style.tableBlue}`}>
@@ -83,7 +87,7 @@ const TransactionCard = ({
           <div
             className={`${Style.content} ${Style.tableBlue} ${Style.contentCol}`}
           >
-            <div>$ {transaction.amount.toLocaleString()}</div>
+            <div>${transaction.amount.toLocaleString()}</div>
 
             {transaction.status === TransactionStatus.SUCCESS ? (
               <>
@@ -92,7 +96,7 @@ const TransactionCard = ({
                 </div>
 
                 <div className={`${Style.deductionAmount} ${Style.tableRed}`}>
-                  - $ {transaction.deduction?.toLocaleString()}
+                  - ${transaction.deduction?.toLocaleString()}
                 </div>
               </>
             ) : (
