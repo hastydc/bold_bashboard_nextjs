@@ -69,7 +69,6 @@
   @include media(mobile) {
     border-bottom: rem(1) solid rgba($colorGrayDark, 1);
     box-sizing: border-box;
-    padding-bottom: rem(8) rem(0) rem(16);
   }
 
   &:last-of-type {
@@ -118,12 +117,22 @@
 
 .expand {
   position: relative;
-  display: none;
   flex-direction: column;
+  max-height: 0;
+  height: auto;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition-property: max-height, opacity;
+  transition-duration: 1s, 1s;
+  transition-delay: 0s, 1s;
+  transition-timing-function: linear;
 }
 
 .expandActive {
-  display: flex;
+  visibility: visible;
+  max-height: rem(221);
+  opacity: 1;
 }
 
 .btn {
@@ -142,10 +151,11 @@
   justify-content: center;
   align-self: center;
   border-radius: rem(32);
-  margin: rem(8) auto;
+  margin: rem(16) auto rem(8);
 }
 
 .tdAmount {
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
 }
