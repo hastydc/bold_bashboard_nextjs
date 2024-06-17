@@ -57,8 +57,8 @@
 }
 
 .list {
-  opacity: 0;
-  height: 0;
+  height: 100%;
+  max-height: 0;
   list-style-type: none;
   box-sizing: border-box;
   padding: rem(16) rem(16);
@@ -72,18 +72,34 @@
   width: 100%;
   top: 0%;
   z-index: 5;
+  visibility: hidden;
+
+  transition-property: visibility, display, max-height;
+  transition-duration: 0s, 0s, 1s;
+  transition-delay: 0s, 0s, 0s;
+  transition-timing-function: linear;
+
+  li {
+    opacity: 0;
+    transition-delay: 0;
+    transition-timing-function: linear;
+  }
 }
 
 .listActive {
   visibility: visible;
   display: flex;
-  opacity: 1;
-  height: rem(211);
+  height: fit-content;
+  max-height: rem(211);
   flex-direction: column;
   top: calc(100% + rem(8));
-}
 
-.option {
+  li {
+    opacity: 1;
+    transition-delay: 1s;
+    transition-duration: 0.25s;
+    transition-timing-function: linear;
+  }
 }
 
 .btn {
