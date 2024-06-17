@@ -1,11 +1,9 @@
 import { TableData } from '@/models/tableData.interface';
 import { TableAction } from '@/models/tableAction.enum';
 import { Transaction } from '@/models/transaction.interface';
-import { currentDate, transactionData } from '@/mock/data';
+import { currentDate } from '@/mock/data';
 import { DateFilter } from '@/models/dateFilter.enum';
 import { TableKey } from '@/models/tableKey.enum';
-import { useContext, useEffect } from 'react';
-import { LayoutContext } from '@/providers/layout.provider';
 
 export type TableDataReducerProps = {
   action: TableAction;
