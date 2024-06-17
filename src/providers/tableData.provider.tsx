@@ -24,7 +24,10 @@ const TableDataProvider = ({ children, initialState }: ProviderProps) => {
   });
 
   useEffect(() => {
-    dispatch({ action: TableAction.RESTORE_FILTERS, payload: state });
+    dispatch({
+      action: TableAction.RESTORE_FILTERS,
+      payload: { ...transactionData, ...initialState },
+    });
   }, [initialState]);
 
   return (

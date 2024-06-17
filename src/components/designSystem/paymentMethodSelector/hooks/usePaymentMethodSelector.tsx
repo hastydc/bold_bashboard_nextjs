@@ -37,12 +37,6 @@ const usePaymentMethodSelector = (transactions: Transaction[]) => {
     setShowList(false);
   };
 
-  const updateDisabled = () => {
-    setDisabled(
-      !selecteds[PaymentMethod.DATAPHONE] && !selecteds[PaymentMethod.LINK]
-    );
-  };
-
   const updateSelecteds = (option: string) => {
     let response = { ...selecteds };
     let seeAll = false;
@@ -66,15 +60,22 @@ const usePaymentMethodSelector = (transactions: Transaction[]) => {
         response[PaymentMethod.DATAPHONE] && response[PaymentMethod.LINK];
     }
 
-    console.log(response);
     setSelecteds(response);
   };
 
-  const restoreTableData = () => {
+  useEffect(() => {
+    setDisabled(
+      !selecteds[PaymentMethod.DATAPHONE] && !selecteds[PaymentMethod.LINK]
+    );
+  }, [selecteds]);
+
+  useEffect(() => {
+    if (mounted) return;
+
     let response = {};
 
-    if (tableDataState.paymentMethods?.length === options.length) {
-      response = { [optionAll]: true };
+    if (tableDataState.paymentMethods?.length === 2) {
+      response = { [PaymentMethod.ALL]: true };
     }
 
     tableDataState.paymentMethods?.forEach((option: string) => {
@@ -83,17 +84,7 @@ const usePaymentMethodSelector = (transactions: Transaction[]) => {
     });
 
     setMounted(true);
-  };
-
-  useEffect(() => {
-    updateDisabled();
-  }, [selecteds]);
-
-  useEffect(() => {
-    if (mounted) return;
-
-    restoreTableData();
-  }, [tableDataState]);
+  }, [tableDataState, mounted]);
 
   return {
     showList,
