@@ -13,7 +13,7 @@ const useMenuTheme = () => {
 
   useEffect(() => {
     setTheme(Theme.LIGHT);
-  }, []);
+  }, [setTheme]);
 
   return { resolvedTheme, updateTheme };
 };
