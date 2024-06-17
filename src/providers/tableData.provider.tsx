@@ -1,16 +1,15 @@
 import { Dispatch, createContext, useEffect, useReducer } from 'react';
-import tableDataReducer, {
-  TableDataReducerProps,
-} from '../utils/tableData.reducer';
 import { transactionData } from '@/mock/data';
 import { TableData } from '@/models/tableData.interface';
 import { TableAction } from '@/models/tableAction.enum';
+import { TableDataProps } from '@/models/tableDataProps.interface';
+import tableDataUtils from '@/utils/tableData.utils';
 
 export const TableDataContext = createContext<TableData>(transactionData);
 
-export const TableDataDispatchContext = createContext<
-  Dispatch<TableDataReducerProps>
->(() => undefined);
+export const TableDataDispatchContext = createContext<Dispatch<TableDataProps>>(
+  () => undefined
+);
 
 type ProviderProps = {
   children: React.ReactNode;
@@ -18,7 +17,7 @@ type ProviderProps = {
 };
 
 const TableDataProvider = ({ children, initialState }: ProviderProps) => {
-  const [state, dispatch] = useReducer(tableDataReducer, {
+  const [state, dispatch] = useReducer(tableDataUtils, {
     ...transactionData,
     ...initialState,
   });

@@ -4,11 +4,7 @@ import { Transaction } from '@/models/transaction.interface';
 import { currentDate } from '@/mock/data';
 import { DateFilter } from '@/models/dateFilter.enum';
 import { TableKey } from '@/models/tableKey.enum';
-
-export type TableDataReducerProps = {
-  action: TableAction;
-  payload: Partial<TableData>;
-};
+import { TableDataProps } from '@/models/tableDataProps.interface';
 
 const _filter = (sourceTableData: TableData): TableData => {
   const response = sourceTableData;
@@ -109,12 +105,12 @@ const _setPersistence = ({
   );
 };
 
-const tableDataReducer = (
+const tableDataUtils = (
   state: TableData,
   {
     action,
     payload: { dateFilter, paymentMethods, transactions = [] },
-  }: TableDataReducerProps
+  }: TableDataProps
 ) => {
   let response = { ...state, transactions };
 
@@ -135,4 +131,4 @@ const tableDataReducer = (
   return response;
 };
 
-export default tableDataReducer;
+export default tableDataUtils;
